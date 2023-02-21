@@ -2,42 +2,46 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Announcement;
+
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateAnnouncement extends Component
 {   
 
-    public $announcement;
-
+    public $title;
+    public $body;
+    public $price;
+    public $category;
    
         protected $rules =
         [
-            'announcement.title' => 'required|min:4',
-            'announcement.body' => 'required|min:8',
-            'announcement.price' => 'required|numeric',
+            'title' => 'required|min:4',
+            'body' => 'required|min:8',
+            'category' => 'required',
+            'price' => 'required|numeric',
+            'category' => 'required',
         ];
-    
 
-    public function newAnnouncement()
-    {
-        $this->announcement = new Announcement();
-    }
-
-    public function mount()
-    {
-        $this->newAnnouncement();
-    }
 
     public function store()
     {
-        $this->validate();
         
-        $this->announcement->save();
+       $this->validate();
+      
+       $category = Category::find($this->category);
+        
+       $announcement =  $category->announcements()->create([
+         'title' => $this->title,
+         'body' =>  $this->body,
+         'price' => $this->price,
+       ]);
+       
+       Auth::user()->announcements()->save($announcement);
 
         session()->flash('success', 'annuncio creato con successo');
-
-        $this->newAnnouncement();
+       $this->clearForm();
     }
 
      public function updated($propertyName)
@@ -45,8 +49,17 @@ class CreateAnnouncement extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function clearForm()
+    {
+        $this->title = '';
+        $this->body = '';
+        $this->price = '';
+        $this->category = '';
+    }
+
     public function render()
     {
-        return view('livewire.create-announcement');
+        $categories = Category::all();
+        return view('livewire.create-announcement', compact('categories'));
     }
 }
