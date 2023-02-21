@@ -6,4 +6,5 @@ const formLogout = document.querySelector('#form-logout');
 btnLogout.addEventListener('click', e =>{
     e.preventDefault();
     formLogout.submit();
-})
+});
+
