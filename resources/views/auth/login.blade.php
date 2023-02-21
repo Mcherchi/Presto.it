@@ -1,11 +1,11 @@
 <x-main>
     {{--implementare form login  --}}
-
     <div class="container mt-5 p-5">
         <div class="row">
             <div class="col-6 mx-auto">
                 <h1>Accedi</h1>
-                <form action="/login" method="POST">
+                <div class="bg-light p-4 rounded">
+                     <form action="/login" method="POST">
                     @csrf
                     <div class="row g-3">
                         <div class="col-12">
@@ -26,8 +26,8 @@
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Accedi</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
