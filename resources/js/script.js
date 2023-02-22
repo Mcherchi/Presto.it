@@ -1,17 +1,7 @@
-import { Swiper, Navigation, Pagination } from 'swiper';
-import 'swiper/swiper-bundle.css';
-
+import { Swiper, Navigation, Pagination } from "swiper";
+import "swiper/swiper-bundle.css";
 Swiper.use([Navigation, Pagination]);
-//Logica per gestire il logout utente;
-const btnLogout = document.querySelector('#btn-logout');
-const formLogout = document.querySelector('#form-logout');
-
-btnLogout.addEventListener('click', e =>{
-    e.preventDefault();
-    formLogout.submit();
-});
-
-const swiper = new Swiper('.swiper', {
+const swiper = new Swiper(".swiper", {
     // Optional parameters
     // direction: 'vertical',
     loop: true,
@@ -23,8 +13,8 @@ const swiper = new Swiper('.swiper', {
 
     // Navigation arrows
     navigation: {
-        nextEl: '.header-carousel-next',
-        prevEl: '.header-carousel-prev',
+        nextEl: ".header-carousel-next",
+        prevEl: ".header-carousel-prev",
     },
 
     // And if we need scrollbar
@@ -33,14 +23,13 @@ const swiper = new Swiper('.swiper', {
     // },
 });
 
-
 // Logic for selection category from searchbar
 const select = document.getElementById("SelectCategory");
 const submitBtn = document.getElementById("submit-btn");
-
-submitBtn.addEventListener("click",()=>{
+console.log("ciao");
+submitBtn.addEventListener("click", () => {
     const selectedValue = select.value;
-    if (selectedValue) {
-        window.location.href =  `/categoria/${selectedValue}`;
+    if (selectedValue != "") {
+        window.location.href = `/categoria/${selectedValue}`;
     }
-})
+});

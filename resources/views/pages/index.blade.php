@@ -62,20 +62,17 @@
     
     {{-- Start Show last six articles --}}
     <section class="py-5">
-        <div class="container px-5 my-5 ">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-8 col-xl-6">
-                    <div class="text-center">
-                        <h2 class="fw-bolder">I nostri articoli in evidenza</h2>
-                    </div>
-                    <div class="row gx-5">
-                        @foreach ($announcements as $announcement)
+        <div class="container-lg">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    @foreach ($announcements as $announcement)
                         <x-card :data="$announcement"/>
-                        @endforeach
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
+    </div>
     </section>
     {{-- End Show last six articles --}}
 </x-main>
