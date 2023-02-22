@@ -32,3 +32,15 @@ const swiper = new Swiper('.swiper', {
     //     el: '.swiper-scrollbar',
     // },
 });
+
+
+// Logic for selection category from searchbar
+const select = document.getElementById("SelectCategory");
+const submitBtn = document.getElementById("submit-btn");
+
+submitBtn.addEventListener("click",()=>{
+    const selectedValue = select.value;
+    if (selectedValue) {
+        window.location.href =  `/categoria/${selectedValue}`;
+    }
+})
