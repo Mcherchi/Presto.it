@@ -1,27 +1,24 @@
 <x-main>
-    <div class="container mt-5 p-5">
-        <div class="row">
-            <div class="col-6 mx-auto">
-                <h1 class="mb-4">Recupero Password</h1>
-                @if(session('status'))
-                    <div class="alert alert-success">
-                        {{session('status')}}
-                    </div>
-                @endif
+<main class="container form-signin w-100 m-auto">
+      <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-4 text-center m-auto mt-5 shadow">
                 <form action="/forgot-password" method="POST">
-                    @csrf
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control  @error('email') is-invalid @enderror" value="{{old('email')}}">
-                             @error('email') <span class="small text-danger">{{$message}}</span> @enderror
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Recupera Password</button>
-                        </div>
+                @csrf
+                    <img src="assets\Risorsa-1.png" class="mb-4 mt-3" width="50" height="50" alt="">
+                    <h1 class="h3 mb-3 fw-normal">Recupero Password</h1>
+                    <p>Immetti la tua email e ti invieremo il link per reimpostare la tua password!</p>
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" id="email" class="form-control  @error('email') is-invalid @enderror" value="{{old('email')}}" placeholder="email">
+                        <label for="email">Email</label>
+                        @error('email') <span class="small text-danger">{{$message}}</span> @enderror
+                        @if(session('status')) <span class="small text-success">{{session('status')}}</span>@endif
                     </div>
+                    <button class="w-100 btn-main btn-lg py-2 mt-3 mb-5">Recupera Password</button>
+                    <p class="mb-3 text-muted small">© {{date('Y')-1}}/{{date('Y')}}</p>
                 </form>
             </div>
-        </div>
-    </div>
+      </div>
+</main>
 </x-main>
+
+

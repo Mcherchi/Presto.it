@@ -1,36 +1,37 @@
 <x-main>
-    <div class="container mt-5 p-5">
-        <div class="row">
-            <div class="col-6 mx-auto">
-                <form action="/register" method="POST">
+<main class="container form-signin w-100 m-auto">
+      <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-3 text-center m-auto mt-5 shadow">
+                  <form action="/register" method="POST">
                     @csrf
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
+                        <img src="assets\Risorsa-1.png" class="mb-4 mt-3" width="50" height="50" alt="">
+                        <h1 class="h3 mb-3 fw-normal">Registrati</h1>
+                        <div class="form-floating mb-1">
+                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="name">
+                            <label for="name">Nome</label>
                             @error('name') <span class="small text-danger">{{$message}}</span>@enderror
                         </div>
-                        <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input type="email" name="email" id="email" class="form-control  @error('email') is-invalid @enderror" value="{{old('email')}}" placeholder="email">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control  @error('email') is-invalid @enderror" value="{{old('email')}}">
-                             @error('email') <span class="small text-danger">{{$message}}</span>@enderror
+                            @error('email') <span class="small text-danger">{{$message}}</span>@enderror
                         </div>
-                        <div class="col-12">
+                        <div class="form-floating mb-1">
+                            <input type="password" name="password" id="password" class="form-control  @error('password') is-invalid @enderror" placeholder="password">
                             <label for="password">Password</label>
-                            <input type="password" name="password" id="password" class="form-control  @error('password') is-invalid @enderror">
-                             @error('password') <span class="small text-danger">{{$message}}</span>@enderror
+                            @error('password') <span class="small text-danger">{{$message}}</span>@enderror
                         </div>
-                        <div class="col-12">
-                            <label for="password_confirmation">Confirm Password</label>
-                            <input type="password" name="password_confirmation" id="password" class="form-control @error('password_confirmation') is-invalid @enderror">
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password_confirmation" id="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="password">
+                            <label for="password">Conferma password</label>
                             @error('password_confirmation') <span class="small text-danger">{{$message}}</span>@enderror
                         </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Registrati</button>
-                        </div>
-                    </div>
-                </form>
+                        <p class="small">Sei già dei nostri? <a href="/login" class="small c-black">Accedi</a></p>
+                        <button class="w-100 btn-main btn-lg py-2 mt-3 mb-5">Registrati</button>
+                        <p class="mb-3 text-muted small">© {{date('Y')-1}}/{{date('Y')}}</p>
+                  </form>
             </div>
-        </div>
-    </div>
+      </div>
+</main>
 </x-main>
+

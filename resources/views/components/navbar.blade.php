@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
   <div class="container-fluid container-lg px-xl-5">
     <a class="navbar-brand d-flex align-items-center" href="{{route('homepage')}}">
-      <img alt="Logo" width="35" height="35" class="d-inline-block align-text-center" src=".\assets\Risorsa-1.png">
+      <img alt="Logo" width="35" height="35" class="d-inline-block align-text-center" src="\assets\Risorsa-1.png">
       <h2 class="mb-0 ps-3 ">Presto.it</h2>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

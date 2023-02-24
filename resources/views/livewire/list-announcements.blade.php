@@ -18,10 +18,12 @@
           <td>{{ $announcement->created_at->format('d/m/Y') }}</td>
           <td class="text-end">
               <button type="button" class="btn btn-sm btn-secondary" wire:click="editAnnouncement({{ $announcement->id }})">Modifica</button>
-              <button type="button" class="btn btn-sm btn-danger"  wire:click="delete({{ $announcement->id }})">Elimina</button>
+              <button type="button" class="btn btn-sm btn-danger"  wire:click="deleteAnnouncement({{ $announcement->id }})">Elimina</button>
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
 </div>
+
+

@@ -1,6 +1,5 @@
 <x-main>
     <div class="container-lg mt-4 mb-4 ms-auto">
-        <h1>Crea Annuncio</h1>
         <div class="row">
             <div class="col-12 col-md-4">
                 <div class="bg-light p-4 rounded">
@@ -13,6 +12,7 @@
                 </div> 
             </div>
         </div>
+    </div>
 </x-main>
 
    

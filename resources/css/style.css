@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
       font-weight: 500;
       text-transform: uppercase;
       border-radius: 15px;
-      transition: 0.5s;
+      transition: all 1s cubic-bezier(.215, .61, .355, 1);
 }
 
 .btn-main:hover {
@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
       font-size: smaller;
       font-weight: 500;
       text-transform: uppercase;
-      transition: 0.5s;
+      transition: all 1s cubic-bezier(.215, .61, .355, 1);
 }
 
 .btn-outline:hover {
@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .box-ann {
-      transition: all 0.3s ease-in-out;
+      transition: all 1s cubic-bezier(.215, .61, .355, 1);
       border-radius: 10px;
   }
 
@@ -106,3 +106,10 @@ h1, h2, h3, h4, h5, h6 {
       filter: blur(5);
   }
 
+#card{
+      transition: all 1s cubic-bezier(.215, .61, .355, 1);
+}
+
+#card:hover{
+     transform: scale(1.1); 
+}

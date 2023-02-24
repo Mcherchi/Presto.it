@@ -29,6 +29,10 @@ class ListAnnouncements extends Component
         $this->emitTo('create-announcement', 'edit', $id);
     }
 
+    public function deleteAnnouncement($id){
+         $this->emitTo('create-announcement', 'delete', $id);
+    }
+
     public function render()
     {
 

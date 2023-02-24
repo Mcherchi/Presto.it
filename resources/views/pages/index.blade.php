@@ -38,14 +38,14 @@
                 <div class="container-lg py-5 bg-main px-3 mt-5 mt-lg-0">
                     <div class="row align-items-center">
                         <div class="col-12 col-md-10 d-flex flex-wrap">
-                            <div class="form-floating col-12 col-md mb-3 me-3">                               
+                            <div class="form-floating col-12 col-md-12 mb-3 me-3">                               
                                 <select id="SelectCategory" class="form-select" name=""  aria-label="seleziona un'opzione">
-                                        <option selected>Seleziona categoria</option>
+                                        
                                      @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                      @endforeach 
                                 </select>                           
-                                        <label>Seleziona</label>
+                                <label>Seleziona Categoria</label>
                             </div>                    
                         </div>
                         <div class="col-12 col-md-2">
