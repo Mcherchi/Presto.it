@@ -12,9 +12,10 @@
 </head>
 
 <body>
-
+     <div class="cursor"></div>
+     <div class="cursor2"></div>
     <x-navbar/>
-   
+    
 
     {{ $slot }}
    
