@@ -9,6 +9,15 @@ h1, h2, h3, h4, h5, h6 {
       font-family: 'Roboto', sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
+a:hover{
+      color: inherit;
+      cursor: pointer;
+}
+
 :root {
       --main:#E86174;                                                                                                                                                                                                                                
       --black: #212529;

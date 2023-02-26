@@ -35,7 +35,7 @@
     {{-- Start Searchbar --}}
     <section>
             <div class="mt-5">
-                <div class="container-lg py-5 bg-main px-3 mt-5 mt-lg-0">
+                <div class="container-lg py-5 bg-main bg-gradient rounded shadow px-3 mt-5 mt-lg-0">
                     <div class="row align-items-center">
                         <div class="col-12 col-md-10 d-flex flex-wrap">
                             <div class="form-floating col-12 col-md-12 mb-3 me-3">                               
@@ -75,9 +75,26 @@
         </div>
       </section>
     </section>
-    {{-- Start Show last six articles --}}
-  
-    {{-- End Show last six articles --}}
+    
+    {{-- job section --}}
+
+<div id="become_revisor" class="container bg-main shadow rounded bg-gradient">
+    <aside class="bg-gradient rounded p-4 p-sm-5 mt-5">
+     <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+            <div class="mb-4 mb-xl-0">
+                <div class="fs-3 fw-bold">Vuoi lavorare <span class="text-light">con noi</span>?</div>
+                <div class="text-50">Clicca sul link di fianco e invia la richiesta per diventare nostro revisore..</div>
+            </div>
+            <div class="ms-xl-4">
+                <div>
+                     <a href="{{route('become.revisor')}}" class="btn btn-dark">Invia Richiesta</a>
+                </div>
+             </div>
+        </div>
+    </aside>                                                                      
+</div>
+
+
 </x-main>
 
  

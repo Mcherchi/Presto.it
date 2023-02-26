@@ -13,13 +13,13 @@
           <a class="nav-link active" aria-current="page" href="{{route('homepage')}}">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="{{route('announcements.index')}}">Annunci</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#">Chi siamo</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="{{route('announcements.index')}}">Annunci</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Contatti</a>
+          <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
         </li>
         @guest
         <a class="btn btn-outline btn-sm px-3 mx-3" href="{{route('login')}}">accedi</a>
@@ -32,6 +32,15 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item nav-link btn-sm " href="{{route('announcements.create')}}">Crea Annunci</a></li>
+            @if (Auth::user()->is_revisor)
+              <li class="position-relative">
+                <a class="dropdown-item nav-link btn-sm " href="{{route('revisor.index')}}">Revisiona Annunci</a>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{App\Models\Announcement::toBeRevisionedCount()}}
+              <span class="visually-hidden">revisioni da effettuare</span>
+            </span>
+              </li>
+            @endif
             <li><hr class="dropdown-divider"></li>
             <li>
               <a class="dropdown-item nav-link" id="btn-logout" onclick=" event.preventDefault(); getElementById('form-logout').submit()" href="/logout">Esci</a>

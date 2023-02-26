@@ -33,7 +33,7 @@
       </div>
 
       <div class="card-body p-4 text-center">
-        <div class="badge bg-main bg-gradient rounded-pill mb-4">{{$announcement->category->name}}</div>
+        <div class="badge bg-main bg-gradient rounded-pill mb-4"><a class="text-decoration-none" href="{{route('categoryShow', ['category' => $announcement->category])}}">{{$announcement->category->name}}</a></div>
         
             <h3 class="card-title mb-3">{{$announcement->title}}</h3>
        
@@ -49,12 +49,23 @@
         </div>
         <div class="col text-center py-2 c-main">
               <i class="fa-solid fa-calendar-day"></i>
-              {{$announcement->created_at}}
+              {{$announcement->created_at->format('d/m/Y')}}
         </div>
-        <div class="col text-center py-2 c-main">
-            <a class="btn btn-main px-4 py-2" href="{{route('categoryShow', ['category' => $announcement->category])}}">Categoria: {{$announcement->category->name}}</a>
+      </div> 
+      @if($announcement->is_accepted === null)
+      <div class="d-flex mb-3 mt-3 align-items-center justify-content-center">
+            <form action="{{route('revisor.accept_announcement', ['announcement' => $announcement])}}" method="POST">
+            @csrf
+            @method('PATCH')
+                <button type="submit" class="btn-main px-3 py-2 me-3">Accetta</button>
+            </form>
+            <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement])}}" method="POST">
+            @csrf
+            @method('PATCH')
+                <button type="submit" class="btn-outline px-3  me-3 py-2">Rifiuta</button>
+            </form>       
         </div>
-      </div>                    
+        @endif                  
     </div>
   </div>
 </div>
