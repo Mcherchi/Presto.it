@@ -17,8 +17,8 @@
             <div class="col-lg-4 col-md-6">
                 <h5 class="c-main mb-4">Newsletters</h5>
                 <p>Insciviti per avere le migliori informazioni presenti sul mercato</p>
-                <div class="position-relative mx-auto" style="width:400px;">
-                    <input type="email" class="form-control bg-transparent w-100 py-3 ps-4 pe-5 text-white" placeholder="inserisci la tua mail">
+                <div class="position-relative mx-auto">
+                    <input type="email" class="form-control bg-transparent  py-3 ps-4 pe-5 text-white" placeholder="inserisci la tua mail">
                     <button type="button" class="btn btn-main py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                 </div>
             </div>

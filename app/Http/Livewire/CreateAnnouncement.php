@@ -160,7 +160,7 @@ class CreateAnnouncement extends Component
             Auth::user()->announcements()->save($announcement);
         }
 
-        session()->flash('success', 'annuncio ' . ($this->announcementId ? 'modificato' : 'creato') . ' con successo');
+        session()->flash('success', 'annuncio ' . ($this->announcementId ? 'modificato' : 'creato') . ' con successo. In attesa di revisione!');
 
         $this->clearForm();
 

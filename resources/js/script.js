@@ -52,14 +52,31 @@ a.forEach((item) => {
 
 
 
-// Logic for selection category from searchbar
+function inizializeSearchForm(){
+const form = document.getElementById("form-search");
+const searchInput = document.getElementById("searchInput");
 const select = document.getElementById("SelectCategory");
 const submitBtn = document.getElementById("submit-btn");
+
+searchInput.addEventListener("input", () => {
+    select.value = "";
+});
+
+select.addEventListener("click", () => {
+    searchInput.value = "";
+});
+
 submitBtn.addEventListener("click", () => {
     const selectedValue = select.value;
     if (selectedValue != "") {
         window.location.href = `/categoria/${selectedValue}`;
+    } else {
+        form.submit();
     }
 });
 
+}
 
+document.addEventListener('DOMContentLoaded',()=>{
+    inizializeSearchForm();
+})

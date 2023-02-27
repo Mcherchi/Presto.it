@@ -36,22 +36,7 @@
     <section>
             <div class="mt-5">
                 <div class="container-lg py-5 bg-main bg-gradient rounded shadow px-3 mt-5 mt-lg-0">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-md-10 d-flex flex-wrap">
-                            <div class="form-floating col-12 col-md-12 mb-3 me-3">                               
-                                <select id="SelectCategory" class="form-select" name=""  aria-label="seleziona un'opzione">
-                                        
-                                     @foreach ($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                     @endforeach 
-                                </select>                           
-                                <label>Seleziona Categoria</label>
-                            </div>                    
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <button id="submit-btn" class="btn btn-lg btn-dark">Cerca</button>
-                        </div>
-                    </div>
+                   <x-searchBar :datas="$categories"/>
                 </div>
             </div>        
     </section>
@@ -77,9 +62,13 @@
     </section>
     
     {{-- job section --}}
-
+@if(session()->has('success'))
+<div class="alert text-white container bg-main">
+    {{ session('success') }}
+</div>
+@endif
 <div id="become_revisor" class="container bg-main shadow rounded bg-gradient">
-    <aside class="bg-gradient rounded p-4 p-sm-5 mt-5">
+    <aside class="bg-gradient rounded p-4 p-sm-5 mt-1">
      <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
             <div class="mb-4 mb-xl-0">
                 <div class="fs-3 fw-bold">Vuoi lavorare <span class="text-light">con noi</span>?</div>

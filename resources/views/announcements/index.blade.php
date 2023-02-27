@@ -1,30 +1,27 @@
 <x-main>
 <div class="container-fluid p-5 bg-main bg-gradient shadow mb-4">
-<div class="row j">
-    <div class="col-12 p-5">
+<div class="row">
+    <div class="col-12 p-5 text-center">
         <h1 class="display-4 fw-normal text-light">Tutti i nostri annunci</h1>
     </div>
-    <div class="col-12 col-md-10 d-flex flex-wrap">
-        <div class="form-floating col-12 col-md-12 mb-3 me-3">                               
-            <select id="SelectCategory" class="form-select" name=""  aria-label="seleziona un'opzione">
-                                        
-                @foreach ($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                @endforeach 
-            </select>                           
-                <label>Seleziona Categoria</label>
-        </div>                    
-        </div>
-        <div class="col-12 col-md-2">
-            <button id="submit-btn" class="btn btn-lg btn-dark">Cerca</button>
-        </div>
+    <div class="col-8 mx-auto">
+         <x-searchBar :datas="$categories"/>
+    </div>     
 </div>
 </div>
 <div class="container px-5 my-5">
     <div class="row gx-5">
-         @foreach ($announcements as $announcement)
+         @forelse ($announcements as $announcement)
             <x-card :data="$announcement"/>
-        @endforeach
+        @empty
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 text-center m-auto mt-5 shadow">
+                <p class="h3">Non sono presenti annunci per questa ricerca! Prova a cambiare</p>
+                </div>
+            </div>
+        </div>
+        @endforelse
         {{$announcements->links()}}
     </div>
 </div>

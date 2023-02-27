@@ -24,4 +24,11 @@ class PagesController extends Controller
     {
         return view('pages.welcome');
     }
+
+    public function searchAnnouncements(Request $request)
+    {
+        $announcements = Announcement::search($request->searched)->where('is_accepted', true)->paginate(10);
+
+        return view('announcements.index',compact('announcements'));
+    }
 }

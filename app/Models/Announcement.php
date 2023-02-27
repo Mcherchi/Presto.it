@@ -4,12 +4,32 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Scout\Searchable;
 
 class Announcement extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $fillable = ['title', 'body', 'price'];
+
+    /**
+     * Get the indexable data array for the model
+     * 
+     * @return array
+     */
+
+    public function toSearchableArray()
+    {
+        $category=$this->category;
+        $array = [
+            'id'=> $this->id,
+            'title'=> $this->title,
+            'body' => $this->body,
+            'category' => $category,
+        ];
+        return $array;
+    }
 
     public function category()
     {
@@ -29,7 +49,10 @@ class Announcement extends Model
     }
 
     public static function toBeRevisionedCount(){
-        return Announcement::where('is_accepted', null)->count();
+        $revisor = Auth::user();
+        return Announcement::where('is_accepted', null)
+                            ->where('user_id', '!=', $revisor->id)
+                            ->count();
     }
 
 }

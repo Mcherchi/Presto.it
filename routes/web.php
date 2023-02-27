@@ -39,3 +39,7 @@ Route::patch('rifiuta/annuncio/{announcement}',[RevisorController::class,'reject
 
 Route::get('/richiesta/revisore',[RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
 Route::get('/rendi/revisore{user}',[RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
+
+//ricerca annuncio
+
+Route::get('/ricerca/annuncio', [PagesController::class, 'searchAnnouncements'])->name('announcements.search');
