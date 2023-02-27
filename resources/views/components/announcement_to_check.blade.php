@@ -1,4 +1,4 @@
-<div class="carousel-item active">
+
 <div class="card h-100 shadow border-0">
     <img class="card-img-top img-fluid" style="height: 20rem;" src="http://picsum.photos/1000" alt="..." />
     <div class="card-body p-4">
@@ -29,6 +29,6 @@
         </div>
     </div>
 </div>
-</div>
+
 
   

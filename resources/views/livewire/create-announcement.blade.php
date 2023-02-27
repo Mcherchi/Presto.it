@@ -36,6 +36,13 @@
             <label for="price">Prezzo</label>
             @error('price') <span class="error text-danger small">{{ $message }}</span> @enderror
     </div>
+
+    @if($mode === 'create')
+     <p class="small px-2">Prima di venire pubblicato, il tuo annuncio verrà controllato da un nostro revisore </p>
+    @else
+     <p class="small px-2">Prima di venire modificato, il tuo annuncio verrà controllato da un nostro revisore </p>
+    @endif
+
     @if($mode === 'create')
     <button type="submit" class="w-100 btn-main btn-lg py-2 mt-3 mb-5">Salva Annuncio</button>
     @else

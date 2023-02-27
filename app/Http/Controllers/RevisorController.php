@@ -31,6 +31,7 @@ class RevisorController extends Controller
     public function rejectAnnouncement(Announcement $announcement)
     {
         $announcement->setAccepted(false);
+        $announcement->increment('count_rejected');
         return redirect()->back()->with('success', 'Annuncio rifiutato');
     }
 

@@ -21,7 +21,7 @@ class ListAnnouncements extends Component
 
     public function loadData()
     {
-        $this->announcements = Auth::user()->announcements()->where('is_accepted',true)->get();
+        $this->announcements = Auth::user()->announcements()->get();
     }
 
     public function editAnnouncement($id)

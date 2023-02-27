@@ -18,12 +18,25 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#">Chi siamo</a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
-        </li>
+        @auth
+          @if(auth()->user()->is_revisor === 0)
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
+          </li>
+          @endif
+        @endauth
+         
         @guest
-        <a class="btn btn-outline btn-sm px-3 mx-3" href="{{route('login')}}">accedi</a>
-        <a class="btn btn-main btn-sm px-3 me-3" href="{{route('register')}}">registrati</a>
+         <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline btn-sm px-3 mx-3" href="{{route('login')}}">accedi</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-main btn-sm px-3 me-3" href="{{route('register')}}">registrati</a
+        </li>
+       
         @else
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -5,7 +5,9 @@
       <livewire:create-announcement />
     </div>
     <div class="col-12 col-md-8 mt-5">
-      <livewire:list-announcements />
+      <div class="table-responsive">
+        <livewire:list-announcements />
+      </div>  
     </div>
   </div>
 </main>

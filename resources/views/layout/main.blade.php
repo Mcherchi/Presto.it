@@ -19,6 +19,14 @@
 
     {{ $slot }}
    
+    @auth
+        @if(auth()->user()->is_revisor === 0)
+    <x-jobBar/>
+      @endif
+    @endauth
+    @guest
+        <x-jobBar/>
+    @endguest
     <x-footer/>
     @livewireScripts
 
