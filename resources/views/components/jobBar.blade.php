@@ -1,9 +1,9 @@
 @if(session()->has('success'))
-<div class="alert text-white container bg-main">
+<div class="alert text-white container bg-main mt-2">
     {{ session('success') }}
 </div>
 @endif
-<div id="become_revisor" class="container bg-main shadow rounded bg-gradient">
+<div id="become_revisor" class="container bg-main shadow rounded bg-gradient mt-3">
     <aside class="bg-gradient rounded p-4 p-sm-5 mt-1">
      <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
             <div class="mb-4 mb-xl-0">

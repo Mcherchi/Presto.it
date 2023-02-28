@@ -41,7 +41,7 @@ a:hover{
 .btn-main:hover {
       background-color: var(--black);
       color: white;
-      transform: scale(1.1);
+      transform: scale(0.9);
       cursor: pointer;
 }
 
@@ -57,7 +57,7 @@ a:hover{
 .btn-outline:hover {
       border: solid 1px var(--main);
       color: var(--main);
-      transform: scale(1.1);
+      transform: scale(0.9);
       cursor: pointer;
 }
 
@@ -162,4 +162,9 @@ a:hover {
 @media (max-width: 768px) {
   .cursor,
   .cursor2{display:none;}
+}
+
+
+.fade{
+      transition: width .3s, height .3s, opacity .3s !important;
 }

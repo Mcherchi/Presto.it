@@ -50,8 +50,6 @@ a.forEach((item) => {
     });
 });
 
-
-
 function inizializeSearchForm(){
 const form = document.getElementById("form-search");
 const searchInput = document.getElementById("searchInput");
@@ -79,4 +77,4 @@ submitBtn.addEventListener("click", () => {
 
 document.addEventListener('DOMContentLoaded',()=>{
     inizializeSearchForm();
-})
+});

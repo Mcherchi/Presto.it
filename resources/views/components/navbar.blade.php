@@ -38,22 +38,24 @@
         </li>
        
         @else
+         @if (Auth::user()->is_revisor)
+              <li class="position-relative me-2 ms-2">
+                <a class="nav-link btn-sm btn-main px-2 py-1" href="{{route('revisor.index')}}">Revisiona Annunci</a>
+                 @if(App\Models\Announcement::toBeRevisionedCount() > 0)
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
+                  {{App\Models\Announcement::toBeRevisionedCount()}}
+               <span class="visually-hidden">revisioni da effettuare</span>
+               </span>
+               @endif
+              </li>
+          @endif
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           
           <i class="fa-solid fa-circle-user"></i> {{auth()->user()->name}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item nav-link btn-sm " href="{{route('announcements.create')}}">Crea Annunci</a></li>
-            @if (Auth::user()->is_revisor)
-              <li class="position-relative">
-                <a class="dropdown-item nav-link btn-sm " href="{{route('revisor.index')}}">Revisiona Annunci</a>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {{App\Models\Announcement::toBeRevisionedCount()}}
-              <span class="visually-hidden">revisioni da effettuare</span>
-            </span>
-              </li>
-            @endif
+            <li><a class="dropdown-item nav-link btn-sm " href="{{route('announcements.create')}}">Gestione Annunci</a></li>
+            
             <li><hr class="dropdown-divider"></li>
             <li>
               <a class="dropdown-item nav-link" id="btn-logout" onclick=" event.preventDefault(); getElementById('form-logout').submit()" href="/logout">Esci</a>
@@ -65,6 +67,7 @@
         </li>
       </ul>
       @endguest
-    </div>
-  </div>
+    </div>      
+                    
+              
 </nav>

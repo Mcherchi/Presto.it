@@ -11,7 +11,7 @@ class Announcement extends Model
 {
     use HasFactory, Searchable;
 
-    protected $fillable = ['title', 'body', 'price'];
+    protected $fillable = ['title', 'body', 'price', 'rejected_reason'];
 
     /**
      * Get the indexable data array for the model
@@ -46,6 +46,10 @@ class Announcement extends Model
         $this->is_accepted = $value;
         $this->save();
         return true;
+    }
+    public function setRejectionReason($reason)
+    {
+        $this->rejection_reason = $reason;
     }
 
     public static function toBeRevisionedCount(){

@@ -9,7 +9,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-4 shadow">
-     
+     @error('rejection_reason') <div class="mt-2 mb-2 mx-auto alert alert-danger container mt-2 text-center">{{ $message }}</div> @enderror
+     @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -59,16 +60,18 @@
             @method('PATCH')
                 <button type="submit" class="btn-main px-3 py-2 me-3">Accetta</button>
             </form>
-            <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement])}}" method="POST">
+            {{-- <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement])}}" method="POST">
             @csrf
             @method('PATCH')
                 <button type="submit" class="btn-outline px-3  me-3 py-2">Rifiuta</button>
-            </form>       
+            </form>        --}}
+            <button type="button" class="btn-outline px-3 me-3 py-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{$announcement->id}}">Rifiuta</button>
         </div>
         @endif                  
     </div>
   </div>
 </div>
+ <x-rejectModal :data="$announcement"/>  
 </x-main>
 
           

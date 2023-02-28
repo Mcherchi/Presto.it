@@ -133,7 +133,7 @@ class CreateAnnouncement extends Component
 
     protected $listeners = [
         'edit',
-        'delete'
+        'delete',
     ];
 
     public function store()

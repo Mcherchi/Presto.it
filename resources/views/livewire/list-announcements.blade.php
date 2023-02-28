@@ -5,7 +5,7 @@
         <th scope="col">Categoria</th>
         <th scope="col">Prezzo</th>
         <th scope="col">Data Creazione</th>
-        <th scope="col"></th>
+        <th scope="col" class="text-center"><a href="{{route('announcements.create')}}" class="btn btn-main px-2 py-1 text-center mt-3 text-decoration-none">Crea Annuncio</a></th>
       </tr>
     </thead>
     <tbody>
@@ -24,11 +24,12 @@
                  @if($announcement->count_rejected > 2)
               <span class="smale text-danger ms-2 me-2">Rifiutato Definitivamente</span>
               <button type="button" class="btn-main px-2 py-1"  wire:click="deleteAnnouncement({{ $announcement->id }})">Elimina</button>
+              <i class="fa-regular fa-envelope rubberBand" data-bs-toggle="modal" data-bs-target="#exampleModal{{$announcement->id}}"></i>
               @else
               <span type="button" class="btn-outline px-2 py-1" wire:click="editAnnouncement({{ $announcement->id }})">Modifica</span>
               <span class="smale text-danger ms-2">Rifiutato</span>
-              @endif
-             
+              <i class="fa-regular fa-envelope rubberBand" data-bs-toggle="modal" data-bs-target="#exampleModal{{$announcement->id}}"></i>
+              @endif   
               @elseif ($announcement->is_accepted === null)
               <p class="smale text-success">In revisione</p>
             @endif     
@@ -37,3 +38,7 @@
       @endforeach
     </tbody>
 </table>
+
+@foreach ($announcements as $announcement)
+ <x-messageModal :announcement="$announcement"/>
+@endforeach

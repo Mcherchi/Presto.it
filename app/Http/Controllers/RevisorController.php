@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RejectedRequest;
 use App\Mail\BecomeRevisor;
 use App\Models\Announcement;
 use App\Models\User;
@@ -28,10 +29,12 @@ class RevisorController extends Controller
         return redirect()->back()->with('success', 'Annuncio accettato');
     }
 
-    public function rejectAnnouncement(Announcement $announcement)
+    public function rejectAnnouncement(Announcement $announcement, RejectedRequest $request)
     {
         $announcement->setAccepted(false);
         $announcement->increment('count_rejected');
+        $announcement->setRejectionReason($request->input('rejection_reason'));
+        $announcement->save();
         return redirect()->back()->with('success', 'Annuncio rifiutato');
     }
 
