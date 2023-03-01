@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AuthSocialController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RevisorController;
 use App\Models\Announcement;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +45,9 @@ Route::get('/rendi/revisore{user}',[RevisorController::class, 'makeRevisor'])->m
 //ricerca annuncio
 
 Route::get('/ricerca/annuncio', [PagesController::class, 'searchAnnouncements'])->name('announcements.search');
+
+
+//Autenticazione social
+
+Route::get('/auth/{provider}/redirect', [AuthSocialController::class, 'providerRedirect'])->where('provider', 'github|google');
+Route::get('/auth/{provider}/callback', [AuthSocialController::class, 'providerCallback'])->where('provider', 'github|google');

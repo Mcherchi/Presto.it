@@ -18,11 +18,32 @@
                     @if(session('status')) <span class="small text-success">{{session('status')}}</span>@endif
                 </div>
                 <a href="/forgot-password" class="small c-black">Hai dimenticato la password?</a>
-                <button class="w-100 btn-main btn-lg py-2 mt-3 mb-5">Accedi</button>
+                <button class="w-100 btn-main btn-lg py-2 mt-3 mb-1">Accedi</button>
+                <p class="small"><a href="/register" class="text-decoration-none c-main fw-semibold">Registrati</a>, oppure continua con:</p>
+                <p class="mb-2 text-muted small">Continua con:</p>
+
+                <a href="/auth/github/redirect" class="btn btn-git w-100 btn-lg py-2 mb-2">
+                    <i class="fa-brands fa-github me-2"></i> Continua con Google
+                </a>         
+                <a href="/auth/google/redirect" class="btn btn-google w-100 btn-lg py-2 mt-1 mb-2">
+                    <i class="fa-brands fa-google"></i> Continua con Google
+                </a>
                 <p class="mb-3 text-muted small">© {{date('Y')-1}}/{{date('Y')}}</p>
             </form>
         </div>
       </div>
-</section>  {{--implementare form login  --}}
+</section> 
 </x-main>
 
+<p class="small"> <a href="" class="text-decoration-none c-main fw-semibold">Registrati</a>, oppure continua con:</p>
+<div class="d-grid mb-2">
+    <button class="btn-google btn-lg py-2 mt-1 mb-1" type="submit">
+    <i class="fab fa-google me-2"></i> Continua con Google
+    </button>
+</div>
+
+<div class="d-grid">
+    <button class="btn-git w-100 btn-lg py-2 mb-3" type="submit">
+    <i class="fa-brands fa-github me-2"></i> Continua con GitHub
+    </button>
+</div>

@@ -90,6 +90,45 @@ a:hover{
       background-color: var(--black);
       color: white;
   }
+
+  
+  .btn-google
+  {     background-color: #EA4335;
+        color: whitesmoke;
+        border: #EA4335 1px solid;
+        font-size: smaller;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 15px;
+        transition: 0.5s;
+  }
+  
+  .btn-google:hover {
+        background-color: whitesmoke;
+        color: var(--black);
+        border: solid 1px var(--black);
+        transform: scale(0.9);
+        cursor: pointer;
+  }
+
+  .btn-git
+  {     background-color: var(--black);
+        color: whitesmoke;
+        font-size: smaller;
+        font-weight: 500;
+        text-transform: uppercase;
+        border-radius: 15px;
+        transition: 0.5s;
+  }
+  
+  .btn-git:hover {
+      background-color: whitesmoke;
+      color: var(--black);
+      border: solid 1px var(--black);
+        transform: scale(0.9);
+        cursor: pointer;
+  }
   
   .header-carousel-next {
       position: absolute;
@@ -111,7 +150,7 @@ a:hover{
   }
 
   .box-ann:hover {
-      transform: scale(1.1);
+      transform: scale(0.9);
       filter: blur(5);
   }
 
