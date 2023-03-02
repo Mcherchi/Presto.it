@@ -23,7 +23,7 @@
                 <p class="mb-2 text-muted small">Continua con:</p>
 
                 <a href="/auth/github/redirect" class="btn btn-git w-100 btn-lg py-2 mb-2">
-                    <i class="fa-brands fa-github me-2"></i> Continua con Google
+                    <i class="fa-brands fa-github me-2"></i> Continua con Github
                 </a>         
                 <a href="/auth/google/redirect" class="btn btn-google w-100 btn-lg py-2 mt-1 mb-2">
                     <i class="fa-brands fa-google"></i> Continua con Google
@@ -35,15 +35,3 @@
 </section> 
 </x-main>
 
-<p class="small"> <a href="" class="text-decoration-none c-main fw-semibold">Registrati</a>, oppure continua con:</p>
-<div class="d-grid mb-2">
-    <button class="btn-google btn-lg py-2 mt-1 mb-1" type="submit">
-    <i class="fab fa-google me-2"></i> Continua con Google
-    </button>
-</div>
-
-<div class="d-grid">
-    <button class="btn-git w-100 btn-lg py-2 mb-3" type="submit">
-    <i class="fa-brands fa-github me-2"></i> Continua con GitHub
-    </button>
-</div>

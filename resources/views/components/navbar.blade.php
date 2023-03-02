@@ -49,6 +49,7 @@
                @endif
               </li>
           @endif
+          
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-circle-user"></i> {{auth()->user()->name}}

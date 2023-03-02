@@ -14,20 +14,23 @@
 <body>
      <div class="cursor"></div>
      <div class="cursor2"></div>
+
     <x-navbar/>
     
 
     {{ $slot }}
    
     @auth
-        @if(auth()->user()->is_revisor === 0)
-    <x-jobBar/>
+       @if(auth()->user()->is_revisor === 0)
+       <x-jobBar/>
       @endif
     @endauth
     @guest
         <x-jobBar/>
     @endguest
+
     <x-footer/>
+    
     @livewireScripts
 
 
