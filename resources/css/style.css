@@ -205,5 +205,29 @@ a:hover {
 
 
 .fade{
-      transition: width .3s, height .3s, opacity .3s !important;
+     transition: all 1s cubic-bezier(.215, .61, .355, 1) !important;
 }
+
+/* Profile section */
+
+ .img-bio {
+      border-radius: 100px;
+      transition: all 1s cubic-bezier(.215, .61, .355, 1);
+  }
+
+  .img-bio:hover {
+      transform: scale(1.1);
+  }
+
+  /* #profile-image-input{
+      color: transparent;
+  } */
+
+  hr {
+      border: var(--black) solid 1px;
+      width: 60%;
+      margin: auto;
+      margin-bottom: 30px;
+      margin-top: 30px;
+
+  }

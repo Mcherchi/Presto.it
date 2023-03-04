@@ -31,12 +31,8 @@
             <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline btn-sm px-3 mx-3" href="{{route('login')}}">accedi</a>
+          <a class="btn btn-main btn-sm px-3 mx-3" href="{{route('login')}}">accedi</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-main btn-sm px-3 me-3" href="{{route('register')}}">registrati</a
-        </li>
-       
         @else
          @if (Auth::user()->is_revisor)
               <li class="position-relative me-2 ms-2">
@@ -52,12 +48,17 @@
           
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-circle-user"></i> {{auth()->user()->name}}
+          @if(auth()->user()->profile_image)
+              <img src="{{ Storage::url(auth()->user()->profile_image) }}" alt="{{ auth()->user()->name }}" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+              {{auth()->user()->name}}
+          @else
+             <i class="fa-solid fa-circle-user"></i> {{auth()->user()->name}}
+          @endif   
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item nav-link btn-sm " href="{{route('announcements.create')}}">Gestione Annunci</a></li>
-            
-            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item nav-link btn-sm" href="{{route('profile.edit')}}"><i class="fa-solid fa-circle-user me-2"></i>Profilo</a></li>       
+            <li><hr class="dropdown-divider w-100"></li>
             <li>
               <a class="dropdown-item nav-link" id="btn-logout" onclick=" event.preventDefault(); getElementById('form-logout').submit()" href="/logout">Esci</a>
             </li>

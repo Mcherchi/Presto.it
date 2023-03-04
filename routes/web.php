@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthSocialController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RevisorController;
 use App\Models\Announcement;
 use Illuminate\Support\Facades\Auth;
@@ -54,3 +55,8 @@ Route::get('/auth/{provider}/callback', [AuthSocialController::class, 'providerC
 
 Route::get('/imposta/prima/password',[AuthSocialController::class, 'showPasswordForm'])->middleware('auth')->name('show.update.password');
 Route::post('/password', [AuthSocialController::class, 'setPassword'])->name('password.set');
+
+//Edit Profile
+
+Route::get('/profilo', [ProfileController::class, 'showEditProfile'])->name('profile.edit');
+Route::put('modifica/profilo', [ProfileController::class, 'updateProfile'])->name('update.profile');

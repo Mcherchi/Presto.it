@@ -19,7 +19,7 @@
                 </div>
                 <a href="/forgot-password" class="small c-black">Hai dimenticato la password?</a>
                 <button class="w-100 btn-main btn-lg py-2 mt-3 mb-1">Accedi</button>
-                <p class="small"><a href="/register" class="text-decoration-none c-main fw-semibold">Registrati</a>, oppure continua con:</p>
+                <p class="small"><a href="/register" class="text-decoration-none c-main fw-semibold">Registrati</a>, oppure <br> </p>
                 <p class="mb-2 text-muted small">Continua con:</p>
 
                 <a href="/auth/github/redirect" class="btn btn-git w-100 btn-lg py-2 mb-2">
