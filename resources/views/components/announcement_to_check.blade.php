@@ -1,5 +1,5 @@
 <div class="card h-100 shadow border-0">
-    <img class="card-img-top img-fluid" style="height: 20rem;" src="http://picsum.photos/1000" alt="..." />
+         <img class="card-img-top img-fluid" style="height: 25rem;" src="{{Storage::url($data->images()->first()->path)}}" alt="..." />
     <div class="card-body p-4">
         <div class="badge bg-main bg-gradient rounded-pill mb-4">{{$data->category->name}}</div>
 
@@ -35,4 +35,4 @@
 
 
 
-  
+ 

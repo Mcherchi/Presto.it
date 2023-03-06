@@ -231,3 +231,14 @@ a:hover {
       margin-top: 30px;
 
   }
+
+/* preview section*/
+
+.img-preview{
+      height: 100%;
+      width: 100%;
+}
+
+.border-main{
+      border-color: var(--main) !important;
+}

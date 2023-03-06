@@ -11,7 +11,7 @@ class Announcement extends Model
 {
     use HasFactory, Searchable;
 
-    protected $fillable = ['title', 'body', 'price', 'rejected_reason'];
+    protected $fillable = ['title', 'body', 'price'];
 
     /**
      * Get the indexable data array for the model
@@ -57,6 +57,11 @@ class Announcement extends Model
         return Announcement::where('is_accepted', null)
                             ->where('user_id', '!=', $revisor->id)
                             ->count();
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 
 }

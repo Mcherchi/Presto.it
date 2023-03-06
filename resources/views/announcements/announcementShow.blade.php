@@ -13,15 +13,11 @@
      @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="http://picsum.photos/500" class="img-fluid p-3 rounded d-block w-100" alt="...">
+          @foreach ($announcement->images as $image)
+          <div class="carousel-item @if($loop->first) active @endif">
+            <img src="{{Storage::url($image->path)}}" class="img-fluid p-3 rounded d-block w-100" style="height: 25rem;" alt="...">
           </div>
-          <div class="carousel-item">
-            <img src="http://picsum.photos/501" class="img-fluid p-3 rounded d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="http://picsum.photos/502" class="img-fluid p-3 rounded d-block w-100" alt="...">
-          </div>
+          @endforeach  
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -66,16 +62,13 @@
                 <button type="submit" class="btn-outline px-3  me-3 py-2">Rifiuta</button>
             </form>        --}}
             <button type="button" class="btn-outline px-3 me-3 py-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{$announcement->id}}">Rifiuta</button>
-        </div>
+        </div> 
         @endif                  
     </div>
   </div>
 </div>
  <x-rejectModal :data="$announcement"/>  
 </x-main>
-
-          
-
 
 //
 {{-- 

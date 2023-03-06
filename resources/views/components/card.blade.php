@@ -37,7 +37,7 @@
 
 <div id="card" class="col-lg-4 mb-5 h-50">
 <div class="card  shadow border-0 h-50">
-    <img class="card-img-top img-fluid" style="height: 20rem;" src="http://picsum.photos/1000" alt="..." />
+    <img class="card-img-top img-fluid" style="height: 20rem;" src="{{Storage::url($data->images()->first()->path)}}" alt="..." />
     <div class="card-body p-4">
         <div class="badge bg-main bg-gradient rounded-pill mb-4">{{$data->category->name}}</div>
         <a class="text-decoration-none link-dark stretched-link" href="{{route('announcements.show',$data)}}">

@@ -47,7 +47,7 @@
 
     <div class="row align-items-center justify-content-center mb-2">
          <div class="col-8 col-md-4 mt-4 mb-2">
-            <label for="password" class="mb-1 text-start">Password</label>
+            <label for="password" class="mb-1 text-start">Modifica Password</label>
             <input type="password" class="mb-2 form-control shadow @error('password') is-invalid @enderror" placeholder="password" name="password" id="inputPassword">
             @error('password') <span class="small text-danger">{{$message}}</span>@enderror
         </div>

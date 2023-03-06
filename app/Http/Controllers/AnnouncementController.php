@@ -13,8 +13,12 @@ class AnnouncementController extends Controller
     }
 
     public function showAnnouncement(Announcement $announcement)
-    {
-        return view('announcements.announcementShow', compact('announcement'));
+    {   
+        if($announcement->is_accepted){
+            return view('announcements.announcementShow', compact('announcement'));
+        }else{
+            abort(403);
+        }
     }
 
     public function indexAnnouncements()
