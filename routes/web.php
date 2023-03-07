@@ -60,3 +60,7 @@ Route::post('/password', [AuthSocialController::class, 'setPassword'])->name('pa
 
 Route::get('/profilo', [ProfileController::class, 'showEditProfile'])->name('profile.edit');
 Route::put('modifica/profilo', [ProfileController::class, 'updateProfile'])->name('update.profile');
+
+// Cambio lingua
+
+Route::post('/lingua/{lang}', [PagesController::class, 'setLanguage'])->name('set_language_locale');
