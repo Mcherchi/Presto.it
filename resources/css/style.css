@@ -200,7 +200,7 @@ a:hover {
 
 @media (max-width: 768px) {
   .cursor,
-  .cursor2{display:none;}
+  .cursor2{display:block;}
 }
 
 

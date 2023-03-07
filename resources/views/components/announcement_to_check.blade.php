@@ -1,5 +1,5 @@
 <div class="card h-100 shadow border-0">
-         <img class="card-img-top img-fluid" style="height: 25rem;" src="{{Storage::url($data->images()->first()->path)}}" alt="..." />
+         <img class="card-img-top img-fluid" src="{{$data->images()->first()->getUrl(400,300)}}" alt="..." />
     <div class="card-body p-4">
         <div class="badge bg-main bg-gradient rounded-pill mb-4">{{$data->category->name}}</div>
 
