@@ -25,27 +25,41 @@ class CreateAnnouncement extends Component
     public $announcementId;
     public $mode = 'create';
     
-    protected $rules = [
-        'category' => 'required',
-        'title' => 'required|min:4',
-        'body' => 'required|min:8',
-        'price' => 'required|numeric',
-        'images.*'=> 'required|image|max:1024',
-        'temporary_images.*' => 'image|max:1024',
-        'temporary_images' => 'required'
-    ];
+    public function rules()
+    {
+        if($this->mode == 'edit'){
+            return  [
+            'category' => 'required',
+            'title' => 'required|min:4',
+            'body' => 'required|min:8',
+            'price' => 'required|numeric',
+            'images.*'=> 'required|image|max:1024',
+            'temporary_images.*' => 'image|max:1024',
+        ];
+        }else{
+            return [
+                'category' => 'required',
+                'title' => 'required|min:4',
+                'body' => 'required|min:8',
+                'price' => 'required|numeric',
+                'images.*'=> 'required|image|max:1024',
+                'temporary_images.*' => 'image|max:1024',
+                'temporary_images' => 'required'
+            ];
+        }
+    }
 
-    protected $messages = [
-        'required' => 'Il campo :attribute è richiesto',
-        'min' => 'Il campo :attribute è troppo corto',
-        'numeric' => 'Il campo deve essere numerico',
-        'temporary_images.required' => 'L\'immagine è richiesta',
-        'temporary_images.*.image' => 'I file devono essere immagini',
-        'temporary_images.*.max' => 'L\'immagine dev\'essere massimo di 1 mb',
-        'images.*.image' => 'L\'immagine dev\'essere di tipo immagine',
-        'images.*.max' => 'L\'immagine dev\'essere massimo di 1 mb',
+    // protected $messages = [
+    //     'required' => 'Il campo :attribute è richiesto',
+    //     'min' => 'Il campo :attribute è troppo corto',
+    //     'numeric' => 'Il campo deve essere numerico',
+    //     'temporary_images.required' => 'L\'immagine è richiesta',
+    //     'temporary_images.*.image' => 'I file devono essere immagini',
+    //     'temporary_images.*.max' => 'L\'immagine dev\'essere massimo di 1 mb',
+    //     'images.*.image' => 'L\'immagine dev\'essere di tipo immagine',
+    //     'images.*.max' => 'L\'immagine dev\'essere massimo di 1 mb',
 
-    ];
+    // ];
 
     protected $listeners = [
         'edit',

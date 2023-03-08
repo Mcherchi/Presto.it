@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'allAnnouncements' => 'All our announcements!',
+    'allAnnouncements' => 'All our announcements',
     'welcomeTo' => 'Welcome to',
 ];
