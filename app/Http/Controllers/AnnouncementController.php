@@ -14,7 +14,7 @@ class AnnouncementController extends Controller
 
     public function showAnnouncement(Announcement $announcement)
     {   
-        if($announcement->is_accepted === 1 || auth()->user()->is_revisor === 1){
+        if($announcement->is_accepted === 1){
             return view('announcements.announcementShow', compact('announcement'));
         }else{
             abort(403);

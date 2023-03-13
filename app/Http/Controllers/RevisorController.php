@@ -23,10 +23,20 @@ class RevisorController extends Controller
         return view('revisor.index', compact('announcment_to_check'));
     }
 
+    public function showDetails (Announcement $announcement)
+    {
+        $revisor = Auth::user();
+        if($announcement->is_accepted == null && $announcement->user_id !== $revisor->id){
+            return view('revisor.showDetails', compact('announcement'));
+        }else{
+            return redirect()->route('revisor.index');
+        }
+    }
+
     public function acceptAnnouncement(Announcement $announcement)
     {
         $announcement->setAccepted(true);
-        return redirect()->back()->with('success', 'Annuncio accettato');
+        return redirect()->route('revisor.index')->with('success', 'Annuncio accettato');
     }
 
     public function rejectAnnouncement(Announcement $announcement, RejectedRequest $request)
@@ -35,7 +45,7 @@ class RevisorController extends Controller
         $announcement->increment('count_rejected');
         $announcement->setRejectionReason($request->input('rejection_reason'));
         $announcement->save();
-        return redirect()->back()->with('success', 'Annuncio rifiutato');
+        return redirect()->route('revisor.index')->with('success', 'Annuncio rifiutato');
     }
 
     public function becomeRevisor()

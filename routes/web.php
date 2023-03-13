@@ -34,6 +34,7 @@ Route::get('/annunci', [AnnouncementController::class, 'indexAnnouncements'])->n
 
 //Gestione annunci Revisori
 Route::get('/revisor/home', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
+Route ::get('/revisore/dettaglio/annuncio{announcement}', [RevisorController::class, 'showDetails'])->middleware('isRevisor')->name('revisor.details');
 
 Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'acceptAnnouncement'])->middleware('isRevisor')->name('revisor.accept_announcement');
 Route::patch('rifiuta/annuncio/{announcement}',[RevisorController::class,'rejectAnnouncement'])->middleware('isRevisor')->name('revisor.reject_announcement');

@@ -42,7 +42,7 @@
         @error('temporary_images.*') <span class="error text-danger small">{{ $message }}</span> @enderror
         @error('temporary_images') <span class="error text-danger small">{{ $message }}</span> @enderror
     </div>
-    @if(!empty($images))
+    @if(!empty($images) || !empty($announcement_image))
         <div class="row mb-2">
             <div class="col-12 border border-main border-4 rounded">
                 <p>Anteprima immagini</p>
@@ -53,11 +53,16 @@
                             <button type="button" class="btn btn-main text-center mt-2 mx-auto" wire:click="removeImage({{$key}})">Cancella</button>
                         </div>
                     @endforeach
+                    @foreach ($announcement_image as $key => $image)
+                        <div class="col my-3 p-4">
+                            <img src="{{$image->getUrl(400,300)}}" class="img-fluid img-preview mx-auto shadow rounded">
+                            <button type="button" class="btn btn-main text-center mt-2 mx-auto" wire:click="removeAnnouncementImage({{$key}})">Cancella</button>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>   
     @endif
-
     @if($mode === 'create')
      <p class="small px-2">Prima di venire pubblicato, il tuo annuncio verrà controllato da un nostro revisore </p>
     @else

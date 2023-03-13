@@ -8,7 +8,7 @@
 </div>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-4 shadow">
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4 shadow">
      @error('rejection_reason') <div class="mt-2 mb-2 mx-auto alert alert-danger container mt-2 text-center">{{ $message }}</div> @enderror
      @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
       <div id="carouselExample" class="carousel slide">
@@ -49,54 +49,41 @@
               {{$announcement->created_at->format('d/m/Y')}}
         </div>
       </div> 
+      <div class="d-flex mb-3 mt-3 align-items-center justify-content-center">
+            <form action="{{route('revisor.accept_announcement', ['announcement' => $announcement])}}" method="POST">
+            @csrf
+            @method('PATCH')
+                <button type="submit" class="btn-main px-3 py-2 me-3">Accetta</button>
+            </form>
+            {{-- <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement])}}" method="POST">
+            @csrf
+            @method('PATCH')
+                <button type="submit" class="btn-outline px-3  me-3 py-2">Rifiuta</button>
+            </form>        --}}
+            <button type="button" class="btn-outline px-3 me-3 py-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{$announcement->id}}">Rifiuta</button>
+        </div>                 
     </div>
+    <div class="col-12 col-sm-10 col-md-4 col-lg-3">
+      <div class="card-body shadow text-center">
+        <h5>Revisione Immagini</h1>
+        <p>Adulti: <span class="ms-1 {{$image->adult}}"></span></p> 
+        <p>Satira: <span class="ms-1 {{$image->spoof}}"></span></p>
+        <p>Medicina: <span class="ms-1 {{$image->medical}}"></span></p>
+        <p>Violenza: <span class="ms-1 {{$image->violence}}"></span></p>
+        <p>Contenuto Ammicante: <span class="ms-1 {{$image->racy}}"></span></p>
+      </div>
+    </div>
+    <div class="col-12 col-sm-10 col-md-4 col-lg-3">
+      <div class="shadow p-2">
+        <h5>Tags</h5>
+        @if($image->labels)
+          @foreach ($image->labels as $label)
+            <p class="d-inline">{{$label}},</p>
+          @endforeach
+        @endif
+      </div>
+  </div>
   </div>
 </div>
  <x-rejectModal :data="$announcement"/>  
 </x-main>
-
-//
-{{-- 
-      <div class="container-fluid p-5 bg-gradient bg-success shadow mb-4">
-        <div class="row">
-            <div class="col-12 text-light p-5">
-                <h1 class="display-2">Annuncio {{ $announcement->title }}</h1>
-            </div>
-        </div>
-    </div>
-       <div class=" mt-5 mb-5">
-        <div class="container">
-            <div class="row">
-
-            <div class="col-12 col-lg-6 p-0 order-1 order-lg-2 position-relative">
-                <div class="swiper header-carousel">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img class="img-fluid" src="http://picsum.photos/1000" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="img-fluid" src="http://picsum.photos/1003" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="img-fluid" src="http://picsum.photos/1006" alt="">
-                        </div>
-                    </div>
-                    <button class="btn header-carousel-prev btn-carousel">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </button>
-                    <button class="btn header-carousel-next btn-carousel">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                </div>
-            </div>
-
-                <div class="col-lg-6">
-                    <div><h1> Titolo:{{$announcement->title }}</h1></div>
-                        <div><p>prezzo: {{ $announcement->price }}€</p></div>
-                        <div><p>Descizone: {{ $announcement->body }}</p></div>
-                        <a class="btn btn-primary" href="{{route('categoryShow', ['category' => $announcement->category])}}">Categoria: {{$announcement->category->name}}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}

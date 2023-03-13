@@ -27,7 +27,7 @@
                     <button type="submit" class="btn-outline px-3  me-3 py-2">Rifiuta</button>
                 </form> --}}
                 <button type="button" class="btn-outline px-3 me-3 py-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{$data->id}}">Rifiuta</button>
-                <a href="{{route('announcements.show',$data)}}" class="btn-outline px-3 py-2 text-decoration-none"> Dettaglio</a>
+                <a href="{{route('revisor.details',$data)}}" class="btn-outline px-3 py-2 text-decoration-none"> Dettaglio</a>
             </div>
         </div>
     </div>
