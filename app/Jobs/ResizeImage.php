@@ -45,5 +45,11 @@ class ResizeImage implements ShouldQueue
         $croppedImage = Image::load($srcPath)
                         ->crop(Manipulations::CROP_CENTER, $w, $h)
                         ->save($destPath);
+
+        $croppedImage2 = Image::load($destPath)->watermark(base_path('resources\img\Risorsa-1.png'))
+                        ->watermarkPosition(Manipulations::POSITION_BOTTOM_RIGHT)
+                        ->watermarkPadding(10, 10, Manipulations::UNIT_PERCENT)
+                        ->watermarkHeight(25, Manipulations::UNIT_PIXELS)
+                        ->watermarkWidth(25, Manipulations::UNIT_PIXELS);
     }
 }
