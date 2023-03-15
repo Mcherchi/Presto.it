@@ -57,10 +57,11 @@ Route::get('/auth/{provider}/callback', [AuthSocialController::class, 'providerC
 Route::get('/imposta/prima/password',[AuthSocialController::class, 'showPasswordForm'])->middleware('auth')->name('show.update.password');
 Route::post('/password', [AuthSocialController::class, 'setPassword'])->name('password.set');
 
-//Edit Profile
+// Profile
 
 Route::get('/profilo', [ProfileController::class, 'showEditProfile'])->name('profile.edit');
 Route::put('modifica/profilo', [ProfileController::class, 'updateProfile'])->name('update.profile');
+Route::get('profilo/venditore/{user}', [ProfileController::class, 'showProfile'])->name('show.profile');
 
 // Cambio lingua
 

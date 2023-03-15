@@ -1,6 +1,6 @@
 <x-main>
 <div class="container-fluid p-5 bg-main bg-gradient shadow mb-4">
-      <div class="row j">
+      <div class="row">
             <div class="col-12 p-5">
                   <h1 class="display-4 fw-normal text-light">Dettaglio Annuncio: {{$announcement->title}}</h1>
             </div>
@@ -9,8 +9,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-4 shadow">
-     @error('rejection_reason') <div class="mt-2 mb-2 mx-auto alert alert-danger container mt-2 text-center">{{ $message }}</div> @enderror
-     @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           @foreach ($announcement->images as $image)
@@ -20,83 +18,65 @@
           @endforeach  
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="carousel-control-prev-icon me-4 rounded bg-main" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="carousel-control-next-icon rounded bg-main ms-4" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
 
       <div class="card-body p-4 text-center">
-        <div class="badge bg-main bg-gradient rounded-pill mb-4"><a class="text-decoration-none" href="{{route('categoryShow', ['category' => $announcement->category])}}">{{$announcement->category->name}}</a></div>
-        
-            <h3 class="card-title mb-3">{{$announcement->title}}</h3>
-       
-        <p class="card-text mb-3">{{$announcement->body}}</p>
+        <div class="badge bg-main bg-gradient rounded-pill mb-4"><a class="text-decoration-none" href="{{route('categoryShow', ['category' => $announcement->category])}}">{{$announcement->category->name}}</a></div> 
+          <h3 class="card-title mb-3">{{$announcement->title}}</h3>
+          <p class="card-text mb-3">{{$announcement->body}}</p>
         <div class="small">
           <h6><span class="fw-bold">Prezzo: </span><span class="text-muted">{{$announcement->price}} €</span></h6>
         </div>
       </div>
-      <div class="footer bg-white d-flex">
+      <div class="footer bg-white row">
         <div class="col text-center py-2 c-main">
               <i class="fa-solid fa-tag"></i>
-              {{$announcement->user->name}}
+              <a href="{{route('show.profile', $announcement->user)}}">{{$announcement->user->name ?? ''}}</a>
+        </div>
+         <div class="col text-center py-2 c-main">
+              <i class="fa-solid fa-tag"></i>
+              <span data-bs-toggle="collapse" type="button" data-bs-toggle="collapse" data-bs-target="#contactForm" aria-expanded="false" aria-controls="contactForm">Contatta</span>
         </div>
         <div class="col text-center py-2 c-main">
               <i class="fa-solid fa-calendar-day"></i>
-              {{$announcement->created_at->format('d/m/Y')}}
+              <span>{{$announcement->created_at->format('d/m/Y')}}</span>
         </div>
+            {{-- collapse --}}
+      <div class="collapse w-100 text-center shadow mt-2 rounded" id="contactForm">
+        <div class="card-body">
+            <form>
+               <img src="\assets\Risorsa-1.png" class="mb-4 mt-3" width="30" height="30" alt="">
+               <h1 class="h5 mb-3 fw-normal">Richiedi informazioni</h1>
+                <div class="form-floating mb-1">
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="name">
+                    <label for="name">Nome*</label>
+                    @error('name') <span class="small text-danger">{{$message}}</span>@enderror
+                </div>
+                <div class="form-floating mb-1">
+                    <input type="email" name="email" id="email" class="form-control  @error('email') is-invalid @enderror" value="{{old('email')}}" placeholder="email">
+                    <label for="email">Email*</label>
+                    @error('email') <span class="small text-danger">{{$message}}</span>@enderror
+                </div>
+                 <div class="form-floating mb-1">
+                    <textarea name="description" id="description" rows="10" class="form-control  @error('description') is-invalid @enderror" placeholder="Leave a comment here"></textarea>
+                    <label for="floatingTextarea2">Descrizione...</label>
+                    @error('description') <span class="error text-danger small">{{ $message }}</span> @enderror
+                </div>
+                <button class="w-100 btn-main btn-lg py-2 mt-3 mb-3 mb-1">Invia</button>
+            </form>
+        </div>
+    </div>
+    {{-- End collapse --}}
       </div> 
     </div>
   </div>
-</div>
- <x-rejectModal :data="$announcement"/>  
+</div>  
 </x-main>
 
-//
-{{-- 
-      <div class="container-fluid p-5 bg-gradient bg-success shadow mb-4">
-        <div class="row">
-            <div class="col-12 text-light p-5">
-                <h1 class="display-2">Annuncio {{ $announcement->title }}</h1>
-            </div>
-        </div>
-    </div>
-       <div class=" mt-5 mb-5">
-        <div class="container">
-            <div class="row">
-
-            <div class="col-12 col-lg-6 p-0 order-1 order-lg-2 position-relative">
-                <div class="swiper header-carousel">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img class="img-fluid" src="http://picsum.photos/1000" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="img-fluid" src="http://picsum.photos/1003" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img class="img-fluid" src="http://picsum.photos/1006" alt="">
-                        </div>
-                    </div>
-                    <button class="btn header-carousel-prev btn-carousel">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </button>
-                    <button class="btn header-carousel-next btn-carousel">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                </div>
-            </div>
-
-                <div class="col-lg-6">
-                    <div><h1> Titolo:{{$announcement->title }}</h1></div>
-                        <div><p>prezzo: {{ $announcement->price }}€</p></div>
-                        <div><p>Descizone: {{ $announcement->body }}</p></div>
-                        <a class="btn btn-primary" href="{{route('categoryShow', ['category' => $announcement->category])}}">Categoria: {{$announcement->category->name}}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}

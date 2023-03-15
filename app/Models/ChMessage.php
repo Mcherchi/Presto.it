@@ -13,9 +13,9 @@ class ChMessage extends Model
     public static function chMessageCount()
     {
         $user = Auth::user();       
-        return ChMessage::where('to_id','=',$user->id)
-                        ->count();
-                        
+        return ChMessage::where('to_id','=', $user->id)
+                        ->where('seen', '!=', '1')
+                        ->count();                     
     }
 }
 

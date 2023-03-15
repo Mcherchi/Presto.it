@@ -46,17 +46,15 @@
               </li>   
           @endif
 
-          @if(App\Models\ChMessage::chMessageCount() > 0) 
-          <li class="position-relative me-2 ms-2">                           
-            <a class="nav-link btn-sm btn-main px-2 py-1" href="{{ route('chatify') }}">Messaggi non letti</a>
+           <li class="position-relative me-2 ms-2">                           
+           <a class="nav-link btn-sm btn-outline px-2 py-1" href="{{ route('chatify') }}"><i class="fa-sharp fa-solid fa-comment"></i></a>
+           @if(App\Models\ChMessage::chMessageCount() > 0) 
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
               {{App\Models\ChMessage::chMessageCount()}}
            <span class="visually-hidden">Messaggi non letti</span>
-           </span>                          
+           </span>
+           @endif                      
           </li>
-          @else 
-          <a class="nav-link btn-sm btn-main px-2 py-1" href="{{ route('chatify') }}">Invia un messaggio</a>
-          @endif
           
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
