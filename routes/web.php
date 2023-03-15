@@ -54,8 +54,6 @@ Route::get('/ricerca/annuncio', [PagesController::class, 'searchAnnouncements'])
 Route::get('/auth/{provider}/redirect', [AuthSocialController::class, 'providerRedirect'])->where('provider', 'github|google');
 Route::get('/auth/{provider}/callback', [AuthSocialController::class, 'providerCallback'])->where('provider', 'github|google');
 
-Route::get('/imposta/prima/password',[AuthSocialController::class, 'showPasswordForm'])->middleware('auth')->name('show.update.password');
-Route::post('/password', [AuthSocialController::class, 'setPassword'])->name('password.set');
 
 // Profile
 

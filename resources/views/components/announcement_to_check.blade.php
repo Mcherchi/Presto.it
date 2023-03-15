@@ -1,7 +1,8 @@
 <div class="card h-100 shadow border-0">
          <img class="card-img-top img-fluid" src="{{$data->images()->first()->getUrl(400,300)}}" alt="..." />
     <div class="card-body p-4">
-        <div class="badge bg-main bg-gradient rounded-pill mb-4">{{$data->category->name}}</div>
+        
+        <div class="badge bg-main bg-gradient rounded-pill mb-4 mt-4">{{$data->category->name}}</div>
 
         <p class="card-text mb-1"><strong>#</strong> {{$data->id}}</p>
         <p class="card-text mb-1"><strong>N° rifiuti</strong> {{$data->count_rejected}}</p>

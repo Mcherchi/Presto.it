@@ -13,8 +13,13 @@
     @method('PUT')
     <div class="row align-items-center justify-content-center mb-2">
         <div class="col-12 col-md-12 text-center ">
+         @if($user->profile_image)
             <img src="{{Storage::url($user->profile_image)}}" class="img-bio m-4 shadow "
             width="150" alt="Foto profilo">
+        @else
+             <img src="{{Storage::url($user->avatar)}}" class="img-bio m-4 shadow "
+            width="150" alt="Foto profilo">
+        @endif
         </div>
         <div class="col-12 col-md-4 text-center">
             <label for="profile_image"></label>

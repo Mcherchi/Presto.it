@@ -42,6 +42,7 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $dir = storage_path() . "/app/public/users-avatar/$user->id";
+        // File::makeDirectory($dir, 0775, true,true);
         File::makeDirectory($dir);
         $file = "public/users-avatar/$user->id/$user->name-avatar.png";
         Avatar::create($user->name)->save( "$dir/$user->name-avatar.png", 100);

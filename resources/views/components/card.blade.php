@@ -37,8 +37,8 @@
 
 <div id="card" class="col-lg-4 mb-5 h-50">
 <div class="card  shadow border-0 h-50">
-    <img class="card-img-top img-fluid" src="{{$data->images()->first()->getUrl(400,300)}}" alt="..." />
     <a class="text-decoration-none link-dark" href="{{route('announcements.show',$data)}}">
+    <img class="card-img-top img-fluid" src="{{$data->images()->first()->getUrl(400,300)}}" alt="..." />
         <div class="card-body p-4">
         <div class="badge bg-main bg-gradient rounded-pill mb-4">{{$data->category->name}}</div>
             <h3 class="card-title mb-3">{{ $data->title }}</h3>

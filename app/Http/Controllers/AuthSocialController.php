@@ -8,6 +8,8 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\File;
+use Laravolt\Avatar\Facade as Avatar;
 
 class AuthSocialController extends Controller
 {
@@ -38,46 +40,18 @@ class AuthSocialController extends Controller
             $newUser->password = encrypt('');
             $newUser->save();
 
+            // Crea Avatar 
+            $dir = storage_path() . "/app/public/users-avatar/$newUser->id";
+            // File::makeDirectory($dir, 0775, true,true);
+            File::makeDirectory($dir);
+            $file = "public/users-avatar/$newUser->id/$newUser->name-avatar.png";
+            Avatar::create($newUser->name)->save( "$dir/$newUser->name-avatar.png", 100);
+            $newUser->update(['avatar' => $file]);
             // Autentica il nuovo utente
            
             auth()->login($newUser);
         }
-        return redirect()->route('show.update.password'); 
-    } 
-
-    public function showPasswordForm()
-    {
-            $user = Auth::user();
-    
-            if ($user->is_completed == false) {
-                return view('auth.setFirstLogSocialPass');
-            } else {
-                return redirect()->route('homepage');
-            }
-        
-    }
-
-    public function setPassword(Request $request)
-    {
-        // Valida i dati del form
-        $request->validate([
-            'password' => [
-                'required',
-                'confirmed',
-                Password::min(8)->mixedCase()->numbers(),
-            ],
-        ]);
-
-        // Recupera l'utente autenticato
-        $user = Auth::user();
-
-        // Imposta la nuova password
-        $user->password = Hash::make($request->password);
-        $user->is_completed = true;
-        $user->save();
-
-        // Reindirizza l'utente alla pagina di benvenuto
         return redirect('/welcome');
-    }
+    } 
 
 }
