@@ -181,11 +181,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Laravolt\Avatar\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
         App\Providers\FortifyServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -209,7 +210,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
     ])->toArray(),
 
 ];

@@ -4,11 +4,13 @@ namespace App\Actions\Fortify;
 
 use App\Mail\RegisterMail;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Laravolt\Avatar\Facade as Avatar;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -38,7 +40,15 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
+        $dir = storage_path() . "/app/public/users-avatar/$user->id";
+        File::makeDirectory($dir);
+        $file = "public/users-avatar/$user->id/$user->name-avatar.png";
+        Avatar::create($user->name)->save( "$dir/$user->name-avatar.png", 100);
+        $user->update(['avatar' => $file]);
+
         Mail::to('admin@presto.it')->send(new RegisterMail($user));
+        
         return $user;
     }
 }

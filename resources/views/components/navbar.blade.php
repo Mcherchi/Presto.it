@@ -59,10 +59,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           @if(auth()->user()->profile_image)
-              <img src="{{ Storage::url(auth()->user()->profile_image) }}" alt="{{ auth()->user()->name }}" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+              <img src="{{ Storage::url(auth()->user()->profile_image) }}" alt="{{ auth()->user()->name }}" class="rounded-circle me-2" style="width: 30px; height: 30px;">    
               {{auth()->user()->name}}
-          @else
-             <i class="fa-solid fa-circle-user"></i> {{auth()->user()->name}}
+              @else
+              <img src="{{Storage::url(auth()->user()->avatar)}}" alt="{{ auth()->user()->name }}" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+             {{-- <i class="fa-solid fa-circle-user"></i> {{auth()->user()->name}} --}}
           @endif   
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
