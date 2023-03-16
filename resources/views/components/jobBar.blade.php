@@ -1,5 +1,5 @@
 @if(session()->has('success'))
-<div class="alert text-white container bg-main mt-2">
+<div class="alert text-white container bg-success mt-2">
     {{ session('success') }}
 </div>
 @endif

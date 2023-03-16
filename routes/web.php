@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthSocialController;
+use App\Http\Controllers\InfoMailController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RevisorController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 //Gestione Pagine 
 Route::get('/', [PagesController::class, 'index'])->name('homepage');
-Route::get('categoria/{category}', [PagesController::class, 'categoryShow'])->name('categoryShow');
+Route::get('/categoria/{category}', [PagesController::class, 'categoryShow'])->name('categoryShow');
 Route::get('/welcome',[PagesController::class, 'welcome'])->middleware('auth');
 
 //Annunci 
@@ -37,7 +38,7 @@ Route::get('/revisor/home', [RevisorController::class, 'index'])->middleware('is
 Route ::get('/revisore/dettaglio/annuncio{announcement}', [RevisorController::class, 'showDetails'])->middleware('isRevisor')->name('revisor.details');
 
 Route::patch('/accetta/annuncio/{announcement}',[RevisorController::class,'acceptAnnouncement'])->middleware('isRevisor')->name('revisor.accept_announcement');
-Route::patch('rifiuta/annuncio/{announcement}',[RevisorController::class,'rejectAnnouncement'])->middleware('isRevisor')->name('revisor.reject_announcement');
+Route::patch('/rifiuta/annuncio/{announcement}',[RevisorController::class,'rejectAnnouncement'])->middleware('isRevisor')->name('revisor.reject_announcement');
 
 //Chiedi di diventare revisore 
 
@@ -58,9 +59,13 @@ Route::get('/auth/{provider}/callback', [AuthSocialController::class, 'providerC
 // Profile
 
 Route::get('/profilo', [ProfileController::class, 'showEditProfile'])->name('profile.edit');
-Route::put('modifica/profilo', [ProfileController::class, 'updateProfile'])->name('update.profile');
-Route::get('profilo/venditore/{user}', [ProfileController::class, 'showProfile'])->name('show.profile');
+Route::put('/modifica/profilo', [ProfileController::class, 'updateProfile'])->name('update.profile');
+Route::get('/profilo/venditore/{user}', [ProfileController::class, 'showProfile'])->name('show.profile');
 
 // Cambio lingua
 
 Route::post('/lingua/{lang}', [PagesController::class, 'setLanguage'])->name('set_language_locale');
+
+//Richiesta informazioni
+
+Route::post('/richiesta/info',[InfoMailController::class, 'infoSend'])->name('infoSend');

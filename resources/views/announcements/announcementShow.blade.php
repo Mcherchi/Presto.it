@@ -9,6 +9,16 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-4 shadow">
+       @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           @foreach ($announcement->images as $image)
@@ -40,18 +50,27 @@
               <i class="fa-solid fa-tag"></i>
               <a href="{{route('show.profile', $announcement->user)}}">{{$announcement->user->name ?? ''}}</a>
         </div>
-         <div class="col text-center py-2 c-main">
-              <i class="fa-solid fa-tag"></i>
-              <span data-bs-toggle="collapse" type="button" data-bs-toggle="collapse" data-bs-target="#contactForm" aria-expanded="false" aria-controls="contactForm">Contatta</span>
+         <div class="col text-center py-2 c-main" data-bs-toggle="collapse" type="button" data-bs-toggle="collapse" data-bs-target="#contactForm{{$announcement->id}}" aria-expanded="false" aria-controls="contactForm">
+              <i class="fa-solid fa-envelope"></i>
+              <span >Contatta</span>
         </div>
+       @if(Auth::check())
+        <div class="col text-center py-2 c-main">
+            <div><a class="" href="/chatify/{{$announcement->user->id}}"><i class="fa-sharp fa-solid fa-comment"></i></a></div>
+            <span class="text-decoration-none">chat</span>
+        </div>
+        @endif
         <div class="col text-center py-2 c-main">
               <i class="fa-solid fa-calendar-day"></i>
               <span>{{$announcement->created_at->format('d/m/Y')}}</span>
         </div>
-            {{-- collapse --}}
-      <div class="collapse w-100 text-center shadow mt-2 rounded" id="contactForm">
+       {{-- collapse --}}
+      <div class="collapse w-100 text-center shadow mt-2" id="contactForm{{$announcement->id}}">
         <div class="card-body">
-            <form>
+            <form action="{{route('infoSend')}}" method="POST">
+                @csrf
+               <input type="hidden" name="announcement_id" value="{{ $announcement->id }}">
+               <input type="hidden" name="announcement_title" value="{{ $announcement->title }}">
                <img src="\assets\Risorsa-1.png" class="mb-4 mt-3" width="30" height="30" alt="">
                <h1 class="h5 mb-3 fw-normal">Richiedi informazioni</h1>
                 <div class="form-floating mb-1">
@@ -69,7 +88,7 @@
                     <label for="floatingTextarea2">Descrizione...</label>
                     @error('description') <span class="error text-danger small">{{ $message }}</span> @enderror
                 </div>
-                <button class="w-100 btn-main btn-lg py-2 mt-3 mb-3 mb-1">Invia</button>
+                <button type="submit" class="w-100 btn-main btn-lg py-2 mt-3 mb-1">Invia</button>
             </form>
         </div>
     </div>

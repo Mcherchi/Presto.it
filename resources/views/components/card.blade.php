@@ -1,41 +1,14 @@
-{{-- <div class="col-lg-4 mb-5">
-    <div class="card h-100 shadow border-0">
-        <img class="card-img-top" src="http://picsum.photos/1006" alt="..." />
-        <div class="card-body p-4">
-            <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{$data->category->name}}</div>
-            <a class="text-decoration-none link-dark stretched-link" href="#">
-                <h5 class="card-title mb-3">{{$data->title}}</h5>
-            </a>
-            <p class="card-text mb-0">{{$data->body}}</p>
-        </div>
-        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-            <div class="d-flex align-items-end justify-content-between">
-                <div class="d-flex align-items-center">
-                    <div class="small">
-                        <div class="fw-bold">Prezzo</div>
-                        <div class="text-muted">{{$data->price}} €</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-{{-- <div class="col-12 col-md-4 my-2">
-    <div class="card shadow" style="width: 18rem">
-        <img src="http://picsum.photos/1002" class="card-img-top p-3 rounded" alt="">
-        <div class="card-body">
-            <h5 class="card-title">{{ $data->title }}</h5>
-            <p class="small">Pubblicato da: {{$data->user->name ?? ''}} il: {{$data->created_at->format('d/m/Y')}}</p>
-            <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{$data->category->name}}</div>
-            <p class="small">{{$data->price}}€</p>
-            <p class="card-text">{{Str::substr($data->body, 0, 25)}}...</p>    
-            <a href="{{route('announcements.show',$data)}}" class="btn btn-primary shadow">Visualizza dettagli</a>                                
-        </div>
-    </div>
-</div>   --}}
-
-
 <div id="card" class="col-lg-4 mb-5 h-50">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+ @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
 <div class="card  shadow border-0 h-50">
     <a class="text-decoration-none link-dark" href="{{route('announcements.show',$data)}}">
     <img class="card-img-top img-fluid" src="{{$data->images()->first()->getUrl(400,300)}}" alt="..." />
@@ -62,6 +35,12 @@
             <div><i class="fa-solid fa-envelope"></i></div>
             <span class="text-decoration-none">contatta</span>
         </div>
+        @if(Auth::check())
+        <div class="col text-center py-2 c-main">
+            <div><a class="" href="/chatify/{{$data->user->id}}"><i class="fa-sharp fa-solid fa-comment"></i></a></div>
+            <span class="text-decoration-none">chat</span>
+        </div>
+        @endif
         <div class="col text-center py-2 c-main">
             <div><i class="fa-solid fa-calendar-day"></i></div>
             <span>{{$data->created_at->format('d/m/Y')}}</span>
@@ -70,7 +49,10 @@
     {{-- collapse --}}
       <div class="collapse w-100 text-center shadow mt-2" id="contact-form-{{$data->id}}">
         <div class="card-body">
-            <form>
+            <form action="{{route('infoSend')}}" method="POST">
+                @csrf
+               <input type="hidden" name="announcement_id" value="{{ $data->id }}">
+               <input type="hidden" name="announcement_title" value="{{ $data->title }}">
                <img src="\assets\Risorsa-1.png" class="mb-4 mt-3" width="30" height="30" alt="">
                <h1 class="h5 mb-3 fw-normal">Richiedi informazioni</h1>
                 <div class="form-floating mb-1">
@@ -88,7 +70,7 @@
                     <label for="floatingTextarea2">Descrizione...</label>
                     @error('description') <span class="error text-danger small">{{ $message }}</span> @enderror
                 </div>
-                <button class="w-100 btn-main btn-lg py-2 mt-3 mb-1">Invia</button>
+                <button type="submit" class="w-100 btn-main btn-lg py-2 mt-3 mb-1">Invia</button>
             </form>
         </div>
     </div>
