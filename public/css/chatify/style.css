@@ -18,6 +18,8 @@ body {
   --icon-size: 20px;
   --headers-padding: 1rem;
   --listView-header-height: 110px;
+  --main:#E86174;                                                                                                                                                                                                                                
+  --black: #212529;
 
   /* Light theme variables */
   --primary-bg-color: #fff;
@@ -46,7 +48,7 @@ body {
 
 /* NProgress background */
 #nprogress .bar {
-  background: var(--primary-color) !important;
+  background: var(--bg-maon) !important;
 }
 #nprogress .peg {
   box-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--primary-color) !important;

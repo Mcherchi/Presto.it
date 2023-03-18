@@ -1,14 +1,14 @@
 <x-main>
-<div class="container-fluid p-5 bg-main bg-gradient shadow mb-4">
-      <div class="row j">
-            <div class="col-12 p-5">
+<div class="container-fluid p-3 bg-main bg-gradient shadow mb-4 text-center">
+      <div class="row">
+            <div class="col-12 p-2">
                   <h1 class="display-4 fw-normal text-light">Dettaglio Annuncio: {{$announcement->title}}</h1>
             </div>
       </div>
 </div>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-10 col-md-6 col-lg-4 shadow">
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4 shadow mt-2">
      @error('rejection_reason') <div class="mt-2 mb-2 mx-auto alert alert-danger container mt-2 text-center">{{ $message }}</div> @enderror
      @if(session()->has('success'))<div class="mt-2 mb-2 mx-auto alert alert-success container mt-2">{{ session('success') }}</div>@endif
       <div id="carouselExample" class="carousel slide">
@@ -63,7 +63,7 @@
             <button type="button" class="btn-outline px-3 me-3 py-2" data-bs-toggle="modal" data-bs-target="#rejectModal{{$announcement->id}}">Rifiuta</button>
         </div>                 
     </div>
-    <div class="col-12 col-sm-10 col-md-4 col-lg-3">
+    <div class="col-12 col-sm-10 col-md-4 col-lg-3 mt-2">
       <div class="card-body shadow text-center">
         <h5>Revisione Immagini</h1>
         <p>Adulti: <span class="ms-1 {{$image->adult}}"></span></p> 
@@ -73,7 +73,7 @@
         <p>Contenuto Ammicante: <span class="ms-1 {{$image->racy}}"></span></p>
       </div>
     </div>
-    <div class="col-12 col-sm-10 col-md-4 col-lg-3">
+    <div class="col-12 col-sm-10 col-md-4 col-lg-3 mt-2">
       <div class="shadow p-2">
         <h5>Tags</h5>
         @if($image->labels)

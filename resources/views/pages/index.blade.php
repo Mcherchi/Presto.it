@@ -4,7 +4,7 @@
       <div class="row h-100 align-items-center">
         <div class="col-12 col-lg-7 p-0 order-2 order-lg-1 position-relative">
             <div class="swiper header-carousel">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper mt-2">
                     <div class="swiper-slide">
                         <img class="img-fluid" src="http://picsum.photos/1200/850" alt="">
                     </div>
@@ -24,10 +24,10 @@
             </div>
         </div>
           <div class="col-12 col-lg-5 px-3 px-xl-5 order-1 order-lg-2 text-center text-lg-start">
-              <h1 class="display-5 fw-semibold mt-4">Trova i <span class="c-main">migliori affari</span> nella tua città!</h1>
+              <h1 class="display-5 fw-semibold mt-4">{{__('ui.findThe')}} <span class="c-main">{{__('ui.bestOffers')}}</span> {{__('ui.inCity')}}</h1>
               <p class="c-neutral my-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, provident. Ex, expedita? Molestiae fugit dolor corporis eaque quo quasi amet, atque perspiciatis provident voluptatem possimus debitis?</p>
-              <a class="btn btn-main px-4 py-2" href="{{route('announcements.create')}}">Crea annuncio</a>
-              <a class="btn btn-outline ms-3 px-4 py-2" href="#">Contattaci</a>
+              <a class="btn btn-main px-4 py-2 mt-2" href="{{route('announcements.create')}}">{{__('ui.createAnn')}}</a>
+              <a class="btn btn-outline ms-md-2 px-4 py-2 mt-2" href="#">{{__('ui.contactUs')}}</a>
           </div>
       </div>
     </header> 
@@ -47,7 +47,7 @@
           <div class="row justify-content-center">
             <div class="col-12 col-lg-6 text-center">
 
-              <h2 class="display-6 fw-medium">I nostri <span class="c-main ">annunci</span> in evidenza!</h2>
+              <h2 class="display-6 fw-medium">{{__('ui.our')}} <span class="c-main ">{{__('ui.latest')}}</span> {{__('ui.ann')}}</h2>
                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br> <strong>Expedita, vel!</strong></p>
             </div>
           </div>

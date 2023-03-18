@@ -19,7 +19,7 @@
             <div class="d-flex align-items-end justify-content-between">
                 <div class="d-flex mb-1 align-items-center">
                     <div class="small">
-                        <h6><span class="fw-bold">Prezzo: </span><span class="text-muted">{{$data->price}}€</span></h6>
+                        <h6><span class="fw-bold">{{__('ui.price')}}: </span><span class="text-muted">{{$data->price}}€</span></h6>
                     </div>
                 </div>
             </div>

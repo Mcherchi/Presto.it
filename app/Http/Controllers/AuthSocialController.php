@@ -42,7 +42,8 @@ class AuthSocialController extends Controller
 
             // Crea Avatar 
             $dir = storage_path() . "/app/public/users-avatar/$newUser->id";
-            File::makeDirectory($dir, 0775, true,true);
+            File::makeDirectory($dir);
+            // File::makeDirectory($dir, 0775, true,true);
             $file = "public/users-avatar/$newUser->id/$newUser->name-avatar.png";
             Avatar::create($newUser->name)->save( "$dir/$newUser->name-avatar.png", 100);
             $newUser->update(['avatar' => $file]);

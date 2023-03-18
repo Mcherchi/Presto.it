@@ -83,7 +83,7 @@ a:hover{
       transition: all 0.5s;
       width: 50px;
       height: 50px;
-      border-radius: 50%;
+      border-radius: 35%;
   }
   
   .btn-carousel:hover {
@@ -132,16 +132,39 @@ a:hover{
   
   .header-carousel-next {
       position: absolute;
-      left: 710px;
-      top: calc(90% - 210px);
+      right: 6%;
+      transform: translate(50%, -50%);
+      top: calc(50% + -40px);
+      
       z-index: 998;
   }
   
   .header-carousel-prev {
       position: absolute;
-      left: 710px;
-      top: calc(90% - 265px);
+      right: 6%;
+      transform: translate(50%, 50%);
+      top: calc(50% - 25px);
+      
       z-index: 998;
+  }
+
+  @media (max-width: 768px) {
+      .header-carousel-prev {
+            right: 10%;
+      }
+
+      .header-carousel-next {
+            right: 10%;
+      }
+      .btn-carousel,
+      .btn-carousel:focus {
+      background-color: var(--main);
+      color: var(--black);
+      transition: all 0.5s;
+      width: 35px;
+      height: 35px;
+      border-radius: 35%;
+      }
   }
   
   .box-ann {
@@ -160,6 +183,72 @@ a:hover{
 
 #card:hover{
      transform: scale(1.1); 
+}
+
+
+  .img-bio {
+      border-radius: 100px;
+      transition: 0.5s  ;
+  }
+
+  .img-bio:hover {
+      transform: scale(1.1);
+  }
+
+  hr {
+      border: var(--black) solid 1px;
+      width: 60%;
+      margin: auto;
+      margin-bottom: 30px;
+      margin-top: 30px;
+
+  }
+
+  .bio {
+      background-color: white;
+      border: solid #212529 0.5px;
+      border-radius: 15px;
+      height: 95px;
+  }
+
+ .staff {
+      padding: 0px;
+      overflow: hidden;
+}
+
+.img-staff {
+      transition: all 0.3s ease-in-out;
+      height: 25rem;
+      width: 25rem;
+}
+
+.title-staff {
+      margin-top: 250px;
+      position: absolute;                                                                                                                                                                                                                                                                                                                                                          
+      color: white;
+      z-index: 10;
+      filter: opacity(0);
+      transition: all 0.3s ease-in-out;
+}
+
+.subtitle-staff {
+      margin-top: 300px;
+      position: absolute;
+      color: white;
+      z-index: 10;
+      filter: opacity(0);
+      transition: all 0.3s ease-in-out;
+}
+
+.staff:hover .img-staff {
+      transform: scale(1.1);
+      filter: brightness(0.7);
+      filter: blur(5);
+}
+
+.staff:hover .title-staff, .staff:hover .subtitle-staff {
+      filter: opacity(1);
+      text-shadow: 2px 2px black;
 }
 
 
@@ -232,6 +321,7 @@ a:hover {
 
   }
 
+
 /* preview section*/
 
 .img-preview{
@@ -242,3 +332,9 @@ a:hover {
 .border-main{
       border-color: var(--main) !important;
 }
+ /* helper */
+ .custom-dropdown-menu {
+    min-width: 50px; /* larghezza minima del menu */
+      /* larghezza massima del menu */
+    padding: 0.5rem; /* spazio interno al menu */
+  }

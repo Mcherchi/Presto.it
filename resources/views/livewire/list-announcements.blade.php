@@ -1,11 +1,11 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Titolo</th>
-        <th scope="col">Categoria</th>
-        <th scope="col">Prezzo</th>
-        <th scope="col">Data Creazione</th>
-        <th scope="col" class="text-center"><a href="{{route('announcements.create')}}" class="btn btn-main px-2 py-1 text-center mt-3 text-decoration-none">Crea Annuncio</a></th>
+        <th scope="col">{{__('ui.title')}}</th>
+        <th scope="col">{{__('ui.category')}}</th>
+        <th scope="col">{{__('ui.price')}}</th>
+        <th scope="col">{{__('ui.createdOn')}}</th>
+        <th scope="col" class="text-center"><a href="{{route('announcements.create')}}" class="btn btn-main px-2 py-1 text-center mt-3 text-decoration-none">{{__('ui.createAnn')}}</a></th>
       </tr>
     </thead>
     <tbody>
@@ -18,20 +18,20 @@
           <td class="text-center">
              
              @if($announcement->is_accepted === 1)
-              <button type="button" class="btn-outline px-2 py-1" wire:click="editAnnouncement({{ $announcement->id }})">Modifica</button>
-              <button type="button" class="btn-main px-2 py-1"  wire:click="deleteAnnouncement({{ $announcement->id }})">Elimina</button>
+              <button type="button" class="btn-outline px-2 py-1" wire:click="editAnnouncement({{ $announcement->id }})">{{__('ui.edit')}}</button>
+              <button type="button" class="btn-main px-2 py-1"  wire:click="deleteAnnouncement({{ $announcement->id }})">{{__('ui.delete')}}</button>
               @elseif ($announcement->is_accepted === 0)
-                 @if($announcement->count_rejected > 2)
-              <span class="smale text-danger ms-2 me-2">Rifiutato Definitivamente</span>
-              <button type="button" class="btn-main px-2 py-1"  wire:click="deleteAnnouncement({{ $announcement->id }})">Elimina</button>
+                 @if($announcement->count_rejected > 1)
+              <span class="smale text-danger ms-2 me-2">{{__('ui.rejDef')}}</span>
+              <button type="button" class="btn-main px-2 py-1"  wire:click="deleteAnnouncement({{ $announcement->id }})">{{__('ui.delete')}}</button>
               <i class="fa-regular fa-envelope rubberBand" data-bs-toggle="modal" data-bs-target="#exampleModal{{$announcement->id}}"></i>
               @else
-              <span type="button" class="btn-outline px-2 py-1" wire:click="editAnnouncement({{ $announcement->id }})">Modifica</span>
-              <span class="smale text-danger ms-2">Rifiutato</span>
+              <span type="button" class="btn-outline px-2 py-1" wire:click="editAnnouncement({{ $announcement->id }})">{{__('ui.edit')}}</span>
+              <span class="smale text-danger ms-2">{{__('ui.rejected')}}</span>
               <i class="fa-regular fa-envelope rubberBand" data-bs-toggle="modal" data-bs-target="#exampleModal{{$announcement->id}}"></i>
               @endif   
               @elseif ($announcement->is_accepted === null)
-              <p class="smale text-success">In revisione</p>
+              <p class="smale text-success">{{__('ui.review')}}</p>
             @endif     
           </td>
         </tr>

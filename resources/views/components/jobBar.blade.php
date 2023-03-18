@@ -7,12 +7,12 @@
     <aside class="bg-gradient rounded p-4 p-sm-5 mt-1">
      <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
             <div class="mb-4 mb-xl-0">
-                <div class="fs-3 fw-bold">Vuoi lavorare <span class="text-light">con noi</span>?</div>
-                <div class="text-50">Clicca sul link di fianco e invia la richiesta per diventare nostro revisore..</div>
+                <div class="fs-3 fw-bold">{{__('ui.dywtw')}} <span class="text-light">{{__('ui.withUs')}}</span>?</div>
+                <div class="text-50">{{__('ui.clickOn')}}..</div>
             </div>
             <div class="ms-xl-4">
                 <div>
-                     <a href="{{route('become.revisor')}}" class="btn btn-dark">Invia Richiesta</a>
+                     <a href="{{route('become.revisor')}}" class="btn btn-dark">{{__('ui.sendReq')}}</a>
                 </div>
              </div>
         </div>

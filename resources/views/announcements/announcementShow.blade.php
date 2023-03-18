@@ -1,5 +1,5 @@
 <x-main>
-<div class="container-fluid p-5 bg-main bg-gradient shadow mb-4">
+<div class="container-fluid p-5 bg-main bg-gradient shadow mb-4 text-center">
       <div class="row">
             <div class="col-12 p-5">
                   <h1 class="display-4 fw-normal text-light">Dettaglio Annuncio: {{$announcement->title}}</h1>

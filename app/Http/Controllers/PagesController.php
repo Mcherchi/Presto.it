@@ -13,6 +13,11 @@ class PagesController extends Controller
         $announcements = Announcement::where('is_accepted', true)->take(6)->get()->sortByDesc('created_at');      
         return view('pages.index',compact('announcements'));
     }
+
+    public function aboutUs()
+    {
+        return view('pages.aboutUs');
+    }
     
     public function categoryShow(Category $category)
     {

@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PagesController::class, 'index'])->name('homepage');
 Route::get('/categoria/{category}', [PagesController::class, 'categoryShow'])->name('categoryShow');
 Route::get('/welcome',[PagesController::class, 'welcome'])->middleware('auth');
+Route::get('/chisiamo', [PagesController::class, 'aboutUs'])->name('aboutUs');
 
 //Annunci 
 Route::get('/dettaglio/annuncio/{announcement}',[AnnouncementController::class, 'showAnnouncement'])->name('announcements.show');

@@ -13,30 +13,30 @@
           <a class="nav-link active" aria-current="page" href="{{route('homepage')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="{{route('announcements.index')}}">Annunci</a>
+          <a class="nav-link " aria-current="page" href="{{route('announcements.index')}}">{{__('ui.announcements')}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Chi siamo</a>
+          <a class="nav-link" aria-current="page" href="{{route('aboutUs')}}">{{__('ui.aboutUs')}}</a>
         </li>
         @auth
           @if(auth()->user()->is_revisor === 0)
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
+            <a class="nav-link" aria-current="page" href="#become_revisor">{{__('ui.workWithUs')}}</a>
           </li>
           @endif
         @endauth
          
         @guest
          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#become_revisor">Lavora con noi</a>
+            <a class="nav-link" aria-current="page" href="#become_revisor">{{__('ui.workWithUs')}}</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-main btn-sm px-3 mx-3" href="{{route('login')}}">accedi</a>
+          <a class="btn btn-main btn-sm px-3 mx-3" href="{{route('login')}}">{{__('ui.logIn')}}</a>
         </li>
         @else
          @if (Auth::user()->is_revisor)
               <li class="position-relative me-2 ms-2">            
-                <a class="nav-link btn-sm btn-main px-2 py-1" href="{{route('revisor.index')}}">Revisiona Annunci</a>
+                <a class="nav-link btn-sm btn-main px-2 py-1" href="{{route('revisor.index')}}">{{__('ui.revAnn')}}</a>
                  @if(App\Models\Announcement::toBeRevisionedCount() > 0)
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
                   {{App\Models\Announcement::toBeRevisionedCount()}}
@@ -47,7 +47,7 @@
           @endif
 
            <li class="position-relative me-2 ms-2">                           
-           <a class="nav-link btn-sm btn-outline px-2 py-1" href="{{ route('chatify') }}"><i class="fa-sharp fa-solid fa-comment"></i></a>
+           <a class="nav-link btn-sm btn-outline px-2 py-1 " href="{{ route('chatify') }}"><i class="fa-sharp fa-solid fa-comment"></i></a>
            @if(App\Models\ChMessage::chMessageCount() > 0) 
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
               {{App\Models\ChMessage::chMessageCount()}}
@@ -67,11 +67,11 @@
           @endif   
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item nav-link btn-sm " href="{{route('announcements.create')}}">Gestione Annunci</a></li>
-            <li><a class="dropdown-item nav-link btn-sm" href="{{route('profile.edit')}}"><i class="fa-solid fa-circle-user me-2"></i>Profilo</a></li>       
+            <li><a class="dropdown-item nav-link btn-sm " href="{{route('announcements.create')}}">{{__('ui.annMan')}}</a></li>
+            <li><a class="dropdown-item nav-link btn-sm" href="{{route('profile.edit')}}"><i class="fa-solid fa-circle-user me-2"></i>{{__('ui.profile')}}</a></li>       
             <li><hr class="dropdown-divider w-100"></li>
             <li>
-              <a class="dropdown-item nav-link" id="btn-logout" onclick=" event.preventDefault(); getElementById('form-logout').submit()" href="/logout">Esci</a>
+              <a class="dropdown-item nav-link" id="btn-logout" onclick=" event.preventDefault(); getElementById('form-logout').submit()" href="/logout">{{__('ui.logOut')}}</a>
             </li>
             <form action="{{route('logout')}}" id="form-logout"  method="POST">
               @csrf
@@ -83,7 +83,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-flag"></i>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu row justify-content-center custom-dropdown-menu" aria-labelledby="navbarDropdown">
             <li class="nav-item">
                 <x-_locale lang="it" nation="it"/>
             </li>

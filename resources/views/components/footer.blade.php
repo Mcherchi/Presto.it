@@ -9,10 +9,8 @@
             </div>
             <div class="col-lg-2 col-md-6">
                 <h5 class=" c-main mb-4">Quick Links</h5>
-                <a class="btn btn-link text-white-50" href="#">About us</a>
-                <a class="btn btn-link text-white-50" href="#">Contact us</a>
-                <a class="btn btn-link text-white-50" href="#">Our Services</a>
-                <a class="btn btn-link text-white-50" href="#">Announcements</a>
+                <a class="btn btn-link text-white-50" href="{{route('aboutUs')}}">About us</a>
+                <a class="btn btn-link text-white-50" href="{{route('announcements.index')}}">Announcements</a>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="c-main mb-4">Newsletters</h5>

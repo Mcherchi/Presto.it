@@ -3,7 +3,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <img src="\assets\Risorsa-1.png" class="mb-4 me-2" width="50" height="50" alt="">
-            <h5 class="modal-title" id="rejectModalLabel">Rifiuto annuncio: {{$data->title}}</h5>
+            <h5 class="modal-title" id="rejectModalLabel">{{__('ui.rejectedAnn')}}: {{$data->title}}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -11,11 +11,11 @@
                 @csrf
                 @method('PATCH')
                 <div class="mb-3">
-                    <label for="rejection_reason" class="form-label">Scrivi qui la tua motivazione:</label>
+                    <label for="rejection_reason" class="form-label">{{__('ui.motivRej')}}:</label>
                     <textarea class="form-control @error('rejection_reason') is-invalid @enderror" id="rejection_reason" name="rejection_reason" rows="3"></textarea>
                      @error('rejection_reason') <span class="error text-danger small">{{ $message }}</span> @enderror
                 </div>
-                <button type="submit" class="w-100 btn-main btn-lg py-2 mt-3 mb-5">Rifiuta annuncio</button>
+                <button type="submit" class="w-100 btn-main btn-lg py-2 mt-3 mb-5">{{__('ui.rejAnn')}}</button>
             </form>
         </div>
     </div>
